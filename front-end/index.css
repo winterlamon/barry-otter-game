@@ -1,0 +1,15 @@
+#oneCont{
+    display: inline-block;
+    float: left;
+    width: 500px;
+}
+
+#twoCont{
+    display: inline-block;
+    float: right;
+    width: 500px;
+}
+
+.charButton{
+  display: inline;
+}
