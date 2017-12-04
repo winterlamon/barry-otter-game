@@ -1,0 +1,15 @@
+#p1-container{
+    display: inline-block;
+    float: left;
+    width: 500px;
+}
+
+#p2-container{
+    display: inline-block;
+    float: right;
+    width: 500px;
+}
+
+.charButton{
+  display: block;
+}

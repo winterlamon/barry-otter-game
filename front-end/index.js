@@ -1,4 +1,6 @@
 const store = {characters: []}
+let player1
+let player2
 
 document.addEventListener('DOMContentLoaded', startup)
 
@@ -31,13 +33,24 @@ class Character {
     this.spells = spells;
   }
   static render(){
-    let charList = document.querySelector('.char-list')
-    for (let c of store.characters) {
-      let fresh = document.createElement('li')
-      fresh.id = c.id
-      fresh.innerText = c.name
-      charList.appendChild(fresh)
-    }
+    let charLists = [...document.getElementsByClassName('.char-list')]
+    charLists.forEach(charList => {
+      debugger;
+      for (let c of store.characters) {
+        let charRow = document.createElement('button')
+        charRow.id = c.id
+        charRow.class = 'charButton'
+        charRow.innerText = c.name
+        //let button = document.createElement('button')
+        //button.innerText = "Choose"
+        charRow.addEventListener('click', event => {
+          player1 = Object.assign({}, c)
+          console.log(player1)
+        })
+        charList.appendChild(charRow)
+      }
+    })
+
   };
-  
+
 }
