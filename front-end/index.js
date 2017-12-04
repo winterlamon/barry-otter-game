@@ -33,20 +33,29 @@ class Character {
     this.spells = spells;
   }
   static render(){
-    let charLists = [...document.getElementsByClassName('.char-list')]
+    let charLists = [...document.getElementsByClassName('char-list')]
+    // debugger;
     charLists.forEach(charList => {
-      debugger;
+      // debugger;
       for (let c of store.characters) {
-        let charRow = document.createElement('button')
-        charRow.id = c.id
-        charRow.class = 'charButton'
-        charRow.innerText = c.name
+        let charButton = document.createElement('button')
+        charButton.setAttribute('char-id', c.id)
+        // charButton.id = c.id
+        charButton.class = 'charButton'
+        charButton.innerText = c.name
         //let button = document.createElement('button')
         //button.innerText = "Choose"
-        charRow.addEventListener('click', event => {
-          player1 = Object.assign({}, c)
-          console.log(player1)
+        charButton.addEventListener('click', event => {
+          if (charList.id == 'p1') {
+            player1 = Object.assign({}, c)
+            console.log(`player1: ${player1.name}`)
+          } else {
+            player2 = Object.assign({}, c)
+            console.log(`player2: ${player2.name}`)
+          }
         })
+        let charRow = document.createElement('tr')
+        charRow.appendChild(charButton)
         charList.appendChild(charRow)
       }
     })
