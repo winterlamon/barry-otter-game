@@ -1,13 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
-# characters
+# ===== Characters =====
 
 Character.create(name: 'Harry Potter', house: 'Gryffindor', health: 100, image_url: 'https://roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2017/11/harrypotter.jpg')
 Character.create(name: 'Cedric Diggory', house: 'Hufflepuff', health: 100, image_url: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-11/13/20/asset/buzzfeed-prod-web08/sub-buzz-18048-1479086303-2.jpg?downsize=715:*&output-format=auto&output-quality=auto')
@@ -24,7 +15,7 @@ Character.all.each do |c|
   c.spells = Spell.all
 end
 
-# SPELLS SEED DATA
+# ===== Spells =====
 
 Spell.create(name: "Aguamenti", category: "attack", effect: "Shoots water from wand", strength: 10)
 Spell.create(name: "Avis", category: "attack", effect: "Launches birds from your wand", strength: 15)
@@ -47,8 +38,7 @@ Spell.create(name: "Episkey", category: "heal", effect: "Heals minor injuries", 
 Spell.create(name: "Ferula", category: "heal", effect: "Creates bandages", strength: 10)
 Spell.create(name: "Rennervate", category: "heal", effect: "Cures unconsciousness", strength: 20)
 
-
-
+# ===== Spells by Category =====
 
     # ATTACK Spells
 #     [
@@ -184,7 +174,6 @@ Spell.create(name: "Rennervate", category: "heal", effect: "Cures unconsciousnes
 # ]
 
 
-
     # HEAL Spells
     # [
     #   {
@@ -203,8 +192,6 @@ Spell.create(name: "Rennervate", category: "heal", effect: "Cures unconsciousnes
     #     "effect": "Cures unconsciousness"
     #   },
     # ]
-
-
 
 
 # Spells to use for easter eggs
