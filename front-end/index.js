@@ -54,14 +54,25 @@ function characterSelect() {
 }
 
 function characterProfile(player) {
-  player.div.innerHTML = `<div class="character-profile">
-    <img id="player-1-image" class="character-image" src="${player.imageUrl}" alt="">
-    <div class="hc 1">
-      <div class="hb 1">
-        <center>${player.health} HP</center>
+  player.div.innerHTML = ''
+  let charProfileDiv = document.createElement('div')
+  charProfileDiv.class = 'characterProfile'
+  let spellTable = document.createElement('table')
+  spellTable.innerHTML =
+          `<tr> <td> Attack </td> </tr>
+          <tr> <td> Heal </td> </tr>
+          <tr> <td> Defend </td> </tr>`
+  charProfileDiv.appendChild(spellTable)
+  charProfileDiv.innerHTML +=
+    `<img class="character-image" src="${player.imageUrl}" alt="">
+      <div class="hc 1">
+        <div class="hb 1">
+          <center>${player.health} HP</center>
+        </div>
       </div>
-    </div>
-  </div>`
+    </div>`
+
+   player.div.appendChild(charProfileDiv)
 }
 
 // "id": 1,
