@@ -1,6 +1,9 @@
 .character-image{
   width: 200px;
   border-radius: 20px;
+  display: inline-block;
+  float: right;
+  margin: 30px;
 }
 
 .char-list{
@@ -14,6 +17,7 @@
   border-radius: 20px;
   border-width: 5px;
   border-color: black;
+  margin: 30px;
 }
 
 .hb{
