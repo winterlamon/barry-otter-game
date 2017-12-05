@@ -43,6 +43,7 @@ class Character {
         // charButton.id = c.id
         charButton.class = 'charButton'
         charButton.innerText = c.name
+        // charButton.disabled = true;
         //let button = document.createElement('button')
         //button.innerText = "Choose"
         charButton.addEventListener('click', event => {

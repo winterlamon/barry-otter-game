@@ -11,9 +11,7 @@ Character.create(name: 'Lord Voldemort', house: 'Slytherin', health: 100, image_
 Character.create(name: 'Severus Snape', house: 'Slytherin', health: 100, image_url: 'https://vignette3.wikia.nocookie.net/villains/images/1/12/Snape-will-never-die-severus-snape-22970808-1600-2118.jpg/revision/latest?cb=20170304205903')
 Character.create(name: 'Dolores Umbridge', house: 'Slytherin', health: 100, image_url: 'https://images.moviepilot.com/images/c_limit,q_auto:good,w_600/ket6zbluwttjko7f9ouw/3-reasons-why-we-love-to-hate-harry-potter-s-nemesis-dolores-umbridge.jpg')
 
-Character.all.each do |c|
-  c.spells = Spell.all
-end
+
 
 # ===== Spells =====
 
@@ -37,6 +35,10 @@ Spell.create(name: "Protego Horribilis", category: "defend", effect: "Protects o
 Spell.create(name: "Episkey", category: "heal", effect: "Heals minor injuries", strength: 15)
 Spell.create(name: "Ferula", category: "heal", effect: "Creates bandages", strength: 10)
 Spell.create(name: "Rennervate", category: "heal", effect: "Cures unconsciousness", strength: 20)
+
+Character.all.each do |c|
+  c.spells = Spell.all
+end
 
 # ===== Spells by Category =====
 
