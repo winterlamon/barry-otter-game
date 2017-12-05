@@ -54,49 +54,15 @@ function characterSelect() {
 }
 
 function characterProfile(player) {
-  player.div.innerHTML = ''
-  let charProfileDiv = document.createElement('div')
-  charProfileDiv.class = 'characterProfile'
-  let actionUL = document.createElement('ul')
-  charProfileDiv.appendChild(actionUL)
-
-  let spellTypes = ["Attack", "Defend", "Heal"]
-  for (type of spellTypes) {
-    // creates <li>
-    let buttonLi = document.createElement('li');
-    actionUL.appendChild(buttonLi);
-    // <li>
-    //  <button>
-    let typeButton = document.createElement('button');
-    buttonLi.append(typeButton);
-    typeButton.innerText = type;
-
-    // typeButton.addEventListener('click', (event) => {
-    //   debugger;
-    //   let spellList = player.spells.filter(spell => spell.category === type.toLowerCase());
-    //   let spellUL = document.createElement('ul')
-    //   console.log(player)
-    //
-    // })
-  }
-
-  // spellTable.innerHTML =
-  //         `<tr> <td> <button category="attack">Attack</button>Attack </td> </tr>
-  //         <tr> <td> Heal </td> </tr>
-  //         <tr> <td> Defend </td> </tr>`
-  // charProfileDiv.appendChild(spellTable)
-
-
-  charProfileDiv.innerHTML +=
-    `<img class="character-image" src="${player.imageUrl}" alt="">
-      <div class="hc 1">
-        <div class="hb 1">
-          <center>${player.health} HP</center>
-        </div>
+  player.div.innerHTML = `<div class="character-profile">
+    <img id="player-1-image" class="character-image" src="${player.imageUrl}" alt="">
+    <div class="hc 1">
+      <div class="hb 1">
+        <center>${player.health} HP</center>
       </div>
-    </div>`
-
-   player.div.appendChild(charProfileDiv)
+    </div>
+  </div>`
+  
 }
 
 // "id": 1,
