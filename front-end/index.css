@@ -1,8 +1,13 @@
+.character-image{
+  width: 200px;
+  border-radius: 20px;
+}
+
 .char-list{
   background-color: red;
 }
 
-.hc1{
+.hc{
   width: 200px;
   height: 20px;
   background-color: lightblue;
@@ -11,14 +16,14 @@
   border-color: black;
 }
 
-.hb1{
+.hb{
   width: 100px;
   height: 20px;
   background-color: lightgreen;
   border-radius: 20px;
 }
 
-#oneCont{
+#p1-container{
     display: inline-block;
     float: left;
     width: 500px;
@@ -26,7 +31,7 @@
     border-radius: 20px;
 }
 
-#twoCont{
+#p2-container{
     display: inline-block;
     float: right;
     width: 500px;

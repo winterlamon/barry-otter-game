@@ -2,6 +2,9 @@ const store = {characters: []}
 let player1
 let player2
 
+// const p2Container = document.getElementsById('p2-contain')
+
+
 document.addEventListener('DOMContentLoaded', startup)
 
 function startup() {
@@ -12,9 +15,53 @@ function startup() {
 
 function createCharacters(json) {
   json.forEach(c => {
-    store.characters.push(new Character(c.id, c.name, c.house, c.health, c.spells))
-  })
-  Character.render()
+    store.characters.push(new Character(c.id, c.name, c.house, c.health, c.spells, c.image_url))
+  });
+    characterSelect()
+}
+
+function characterSelect() {
+  let charLists = [...document.getElementsByClassName('char-list')]
+  // debugger;
+  charLists.forEach(charList => {
+    // debugger;
+    for (let c of Character.all()) {
+      let charButton = document.createElement('button')
+      charButton.setAttribute('char-id', c.id)
+      // charButton.id = c.id
+      charButton.class = 'charButton'
+      charButton.innerText = c.name
+      //let button = document.createElement('button')
+      //button.innerText = "Choose"
+      charButton.addEventListener('click', event => {
+        if (charList.id == 'p1') {
+          player1 = Object.assign({}, c, {div: document.querySelector('#p1-container')})
+          console.log(`player1: ${player1.name}`)
+          characterProfile(player1)
+        } else {
+          player2 = Object.assign({}, c, {div: document.querySelector('#p2-container')})
+          console.log(`player2: ${player2.name}`)
+          characterProfile(player2)
+        }
+
+        // event.target.disabled = true;
+      })
+      let charRow = document.createElement('tr')
+      charRow.appendChild(charButton)
+      charList.appendChild(charRow)
+      }
+    })
+}
+
+function characterProfile(player) {
+  player.div.innerHTML = `<div class="character-profile">
+    <img id="player-1-image" class="character-image" src="${player.imageUrl}" alt="">
+    <div class="hc 1">
+      <div class="hb 1">
+        <center>50 HP</center>
+      </div>
+    </div>
+  </div>`
 }
 
 // "id": 1,
@@ -25,42 +72,17 @@ function createCharacters(json) {
 
 
 class Character {
-  constructor(id, name, house, health, spells) {
+  constructor(id, name, house, health, spells, imageUrl) {
     this.id = id;
     this.name = name;
     this.house = house;
     this.health = health;
     this.spells = spells;
+    this.imageUrl = imageUrl;
   }
-  static render(){
-    let charLists = [...document.getElementsByClassName('char-list')]
-    // debugger;
-    charLists.forEach(charList => {
-      // debugger;
-      for (let c of store.characters) {
-        let charButton = document.createElement('button')
-        charButton.setAttribute('char-id', c.id)
-        // charButton.id = c.id
-        charButton.class = 'charButton'
-        charButton.innerText = c.name
-        // charButton.disabled = true;
-        //let button = document.createElement('button')
-        //button.innerText = "Choose"
-        charButton.addEventListener('click', event => {
-          if (charList.id == 'p1') {
-            player1 = Object.assign({}, c)
-            console.log(`player1: ${player1.name}`)
-          } else {
-            player2 = Object.assign({}, c)
-            console.log(`player2: ${player2.name}`)
-          }
-        })
-        let charRow = document.createElement('tr')
-        charRow.appendChild(charButton)
-        charList.appendChild(charRow)
-      }
-    })
 
-  };
+  static all(){
+    return store.characters;
+  }
 
 }
