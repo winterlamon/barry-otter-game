@@ -62,35 +62,33 @@ function characterProfile(player) {
 
   let spellTypes = ["Attack", "Defend", "Heal"]
   for (let type of spellTypes) {
-    // creates <li>
     let buttonLi = document.createElement('li');
     actionUL.appendChild(buttonLi);
-    // <li>
-    //  <button>
     let typeButton = document.createElement('button');
     buttonLi.append(typeButton);
     typeButton.innerText = type;
 
     typeButton.addEventListener('click', (event) => {
-      // debugger;
       let spellList = player.spells.filter(spell => (spell.category === type.toLowerCase()));
-      let spellUL = document.createElement('ul');
-      console.log(spellList);
-
+      let existingSpell = player.div.getElementsByClassName('spell-ul')
+        if (existingSpell[0]) {
+          existingSpell[0].remove()
+        }
+        let spellUL = document.createElement('ul');
+        spellUL.class = "spell-ul"
+      buttonLi.appendChild(spellUL)
+      console.log(spellUL)
       for (let spell of spellList) {
-        // creates <li>
-        let buttonLi = document.createElement('li');
+        let spellButtonLi = document.createElement('li');
+        spellUL.appendChild(spellButtonLi);
         let spellButton = document.createElement('button');
-        spellUL.append(buttonLi);
+        spellButtonLi.append(spellButton);
         spellButton.innerText = spell.name;
-        // <li>
-        //  <button>
-        buttonLi.append(spellButton);
-
         spellButton.addEventListener('click', (event) => {
-          // debugger;
           console.log(spell);
 
+        })
+      }
     })
   }
 
@@ -106,8 +104,6 @@ function characterProfile(player) {
       </div>`
 
     charProfileDiv.appendChild(imageDiv)
-})
-}
 }
 
 // "id": 1,
