@@ -57,12 +57,36 @@ function characterProfile(player) {
   player.div.innerHTML = ''
   let charProfileDiv = document.createElement('div')
   charProfileDiv.class = 'characterProfile'
-  let spellTable = document.createElement('table')
-  spellTable.innerHTML =
-          `<tr> <td> Attack </td> </tr>
-          <tr> <td> Heal </td> </tr>
-          <tr> <td> Defend </td> </tr>`
-  charProfileDiv.appendChild(spellTable)
+  let actionUL = document.createElement('ul')
+  charProfileDiv.appendChild(actionUL)
+
+  let spellTypes = ["Attack", "Defend", "Heal"]
+  for (type of spellTypes) {
+    // creates <li>
+    let buttonLi = document.createElement('li');
+    actionUL.appendChild(buttonLi);
+    // <li>
+    //  <button>
+    let typeButton = document.createElement('button');
+    buttonLi.append(typeButton);
+    typeButton.innerText = type;
+
+    // typeButton.addEventListener('click', (event) => {
+    //   debugger;
+    //   let spellList = player.spells.filter(spell => spell.category === type.toLowerCase());
+    //   let spellUL = document.createElement('ul')
+    //   console.log(player)
+    //
+    // })
+  }
+
+  // spellTable.innerHTML =
+  //         `<tr> <td> <button category="attack">Attack</button>Attack </td> </tr>
+  //         <tr> <td> Heal </td> </tr>
+  //         <tr> <td> Defend </td> </tr>`
+  // charProfileDiv.appendChild(spellTable)
+
+
   charProfileDiv.innerHTML +=
     `<img class="character-image" src="${player.imageUrl}" alt="">
       <div class="hc 1">
