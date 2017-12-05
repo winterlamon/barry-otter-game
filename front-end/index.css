@@ -1,13 +1,31 @@
+.char-list{
+  background-color: red;
+}
+
+.hc1{
+  width: 200px;
+  height: 40px;
+  background-color: lightblue;
+}
+
+.hb1{
+  width: 100px;
+  height: 40px;
+  background-color: lightgreen;
+}
+
 #oneCont{
     display: inline-block;
     float: left;
     width: 500px;
+    background-color: red;
 }
 
 #twoCont{
     display: inline-block;
     float: right;
     width: 500px;
+    background-color: red;
 }
 
 .charButton{
