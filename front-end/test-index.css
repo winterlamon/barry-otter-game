@@ -1,15 +1,21 @@
 body {
-  position: relative;
   font-family: 'Press Start 2P', cursive;
 }
 
 nav {
+  align-content: center;
   background-color: maroon;
+  color: white;
   display: inline-block;
   position: fixed;
+  width: 100%;
 }
 
 header {
+
+}
+
+div {
 
 }
 
@@ -33,6 +39,10 @@ button {
   background-color: red;
 }
 
+.char-container {
+  padding-top: 64px;
+}
+
 .hc{
   width: 200px;
   height: 20px;
@@ -51,21 +61,21 @@ button {
 }
 
 #p1-container{
-    position: absolute;
-    display: inline-block;
-    float: left;
-    width: 500px;
     background-color: red;
     border-radius: 20px;
+    display: inline-block;
+    float: right;
+    position: relative;
+    width: 500px;
 }
 
 #p2-container{
-    position: absolute;
-    display: inline-block;
-    float: right;
-    width: 500px;
     background-color: red;
     border-radius: 20px;
+    display: inline-block;
+    float: right;
+    position: relative;
+    width: 500px;
 }
 
 .charButton{
