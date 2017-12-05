@@ -58,7 +58,7 @@ function characterProfile(player) {
     <img id="player-1-image" class="character-image" src="${player.imageUrl}" alt="">
     <div class="hc 1">
       <div class="hb 1">
-        <center>50 HP</center>
+        <center>${player.health} HP</center>
       </div>
     </div>
   </div>`
