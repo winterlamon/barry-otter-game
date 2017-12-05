@@ -76,6 +76,21 @@ function characterProfile(player) {
       let spellList = player.spells.filter(spell => (spell.category === type.toLowerCase()));
       let spellUL = document.createElement('ul');
       console.log(spellList);
+
+      for (let spell of spellList) {
+        // creates <li>
+        let buttonLi = document.createElement('li');
+        let spellButton = document.createElement('button');
+        spellUL.append(buttonLi);
+        spellButton.innerText = spell.name;
+        // <li>
+        //  <button>
+        buttonLi.append(spellButton);
+
+        spellButton.addEventListener('click', (event) => {
+          // debugger;
+          console.log(spell);
+
     })
   }
 
@@ -91,6 +106,8 @@ function characterProfile(player) {
       </div>`
 
     charProfileDiv.appendChild(imageDiv)
+})
+}
 }
 
 // "id": 1,
