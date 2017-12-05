@@ -1,3 +1,7 @@
+ul {
+  list-style: none;
+}
+
 .character-image{
   width: 200px;
   border-radius: 20px;
@@ -40,6 +44,7 @@
     float: right;
     width: 500px;
     background-color: red;
+    border-radius: 20px;
 }
 
 .charButton{
