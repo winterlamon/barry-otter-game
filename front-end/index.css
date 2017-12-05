@@ -44,6 +44,7 @@ ul {
     float: right;
     width: 500px;
     background-color: red;
+    border-radius: 20px;
 }
 
 .charButton{
