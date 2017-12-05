@@ -1,9 +1,24 @@
 body {
+  position: relative;
   font-family: 'Press Start 2P', cursive;
+}
+
+nav {
+  background-color: maroon;
+  display: inline-block;
+  position: fixed;
+}
+
+header {
+
 }
 
 ul {
   list-style: none;
+}
+
+button {
+  font-family: 'Press Start 2P', cursive;
 }
 
 .character-image{
@@ -36,6 +51,7 @@ ul {
 }
 
 #p1-container{
+    position: absolute;
     display: inline-block;
     float: left;
     width: 500px;
@@ -44,6 +60,7 @@ ul {
 }
 
 #p2-container{
+    position: absolute;
     display: inline-block;
     float: right;
     width: 500px;
