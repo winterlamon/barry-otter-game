@@ -70,12 +70,13 @@ function characterProfile(player) {
 
     typeButton.addEventListener('click', (event) => {
       let spellList = player.spells.filter(spell => (spell.category === type.toLowerCase()));
-      let existingSpell = player.div.getElementsByClassName('spell-ul')
-        if (existingSpell[0]) {
-          existingSpell[0].remove()
+      // debugger
+      let existingSpell = player.div.querySelector('.spell-ul')
+        if (existingSpell) {
+          existingSpell.remove()
         }
         let spellUL = document.createElement('ul');
-        spellUL.class = "spell-ul"
+        spellUL.setAttribute('class', "spell-ul")
       buttonLi.appendChild(spellUL)
       console.log(spellUL)
       for (let spell of spellList) {
