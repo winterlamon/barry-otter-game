@@ -2,8 +2,29 @@ body {
   font-family: 'Press Start 2P', cursive;
 }
 
+nav {
+  align-content: center;
+  background-color: maroon;
+  color: white;
+  display: inline-block;
+  position: fixed;
+  width: 100%;
+}
+
+header {
+
+}
+
+div {
+
+}
+
 ul {
   list-style: none;
+}
+
+button {
+  font-family: 'Press Start 2P', cursive;
 }
 
 .character-image{
@@ -16,6 +37,10 @@ ul {
 
 .char-list{
   background-color: red;
+}
+
+.char-container {
+  padding-top: 64px;
 }
 
 .hc{
@@ -36,19 +61,21 @@ ul {
 }
 
 #p1-container{
-    display: inline-block;
-    float: left;
-    width: 500px;
     background-color: red;
     border-radius: 20px;
+    display: inline-block;
+    float: right;
+    position: relative;
+    width: 500px;
 }
 
 #p2-container{
-    display: inline-block;
-    float: right;
-    width: 500px;
     background-color: red;
     border-radius: 20px;
+    display: inline-block;
+    float: right;
+    position: relative;
+    width: 500px;
 }
 
 .charButton{
