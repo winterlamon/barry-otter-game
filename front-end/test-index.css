@@ -1,30 +1,20 @@
-body {
+html, body, h1, h2, h3, h4, h5, h6 {
   font-family: 'Press Start 2P', cursive;
 }
 
-nav {
-  align-content: center;
-  background-color: maroon;
-  color: white;
-  display: inline-block;
-  position: fixed;
-  width: 100%;
+h1 {
+  text-align: center;
+  color: black;
 }
 
-header {
-
+body {
+  background-color: white;
+  /*padding-left: 8px;*/
 }
 
-div {
-
-}
 
 ul {
   list-style: none;
-}
-
-button {
-  font-family: 'Press Start 2P', cursive;
 }
 
 .character-image{
@@ -35,13 +25,9 @@ button {
   margin: 30px;
 }
 
-.char-list{
-  background-color: red;
-}
-
-.char-container {
-  padding-top: 64px;
-}
+/*.char-list{
+  background-color: #941B08;
+}*/
 
 .hc{
   width: 200px;
@@ -60,24 +46,56 @@ button {
   border-radius: 20px;
 }
 
-#p1-container{
-    background-color: red;
-    border-radius: 20px;
-    display: inline-block;
-    float: right;
-    position: relative;
+.char-container {
+    /*display: inline-block;*/
+    /*float: right;*/
     width: 500px;
+    background-color: #941B08;
+}
+
+
+#p1-container{
+    display: inline-block;
+    /*background-color: #941B08;*/
+
 }
 
 #p2-container{
-    background-color: red;
-    border-radius: 20px;
     display: inline-block;
-    float: right;
-    position: relative;
-    width: 500px;
+    /*background-color: #941B08;*/
+
 }
 
 .charButton{
   display: inline;
+}
+
+.logo{
+  width: 100px;
+  border-radius: 20px;
+  display: inline-block;
+  /*float: right;
+  margin: 30px;*/
+}
+
+/* ===== cards ===== */
+
+.card-header {
+  text-align: center;
+}
+
+.card-img-top {
+  height: 300px;
+}
+
+#game-details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.welcome {
+  padding: 24px;
 }
