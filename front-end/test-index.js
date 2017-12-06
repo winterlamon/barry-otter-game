@@ -2,14 +2,10 @@ const store = {characters: []}
 let player1
 let player2
 
-// const p2Container = document.getElementsById('p2-contain')
-
-
 document.addEventListener('DOMContentLoaded', startup)
 
 function startup() {
   console.log('hi')
-
   fetch('http://localhost:3000/characters').then(res => res.json()).then(json => createCharacters(json))
 }
 
@@ -22,9 +18,7 @@ function createCharacters(json) {
 
 function characterSelect() {
   let charLists = [...document.getElementsByClassName('char-list')]
-  // debugger;
   charLists.forEach(charList => {
-    // debugger;
     for (let c of Character.all()) {
       let charButton = document.createElement('button')
       charButton.setAttribute('char-id', c.id)
@@ -61,49 +55,52 @@ function characterProfile(player) {
   charProfileDiv.appendChild(actionUL)
 
   let spellTypes = ["Attack", "Defend", "Heal"]
-  for (type of spellTypes) {
-    // creates <li>
+  for (let type of spellTypes) {
     let buttonLi = document.createElement('li');
     actionUL.appendChild(buttonLi);
-    // <li>
-    //  <button>
     let typeButton = document.createElement('button');
     buttonLi.append(typeButton);
     typeButton.innerText = type;
 
-    // typeButton.addEventListener('click', (event) => {
-    //   debugger;
-    //   let spellList = player.spells.filter(spell => spell.category === type.toLowerCase());
-    //   let spellUL = document.createElement('ul')
-    //   console.log(player)
-    //
-    // })
+    typeButton.addEventListener('click', (event) => {
+      let spellList = player.spells.filter(spell => (spell.category === type.toLowerCase()));
+      // debugger
+      let existingSpell = player.div.querySelector('.spell-ul')
+        if (existingSpell) {
+          existingSpell.remove()
+        }
+        let spellUL = document.createElement('ul');
+        spellUL.setAttribute('class', "spell-ul")
+      buttonLi.appendChild(spellUL)
+      console.log(spellUL)
+      for (let spell of spellList) {
+        let spellButtonLi = document.createElement('li');
+        spellUL.appendChild(spellButtonLi);
+        let spellButton = document.createElement('button');
+        spellButtonLi.append(spellButton);
+        spellButton.innerText = spell.name;
+        spellButton.addEventListener('click', (event) => {
+          console.log(spell);
+
+        })
+      }
+    })
   }
 
-  // spellTable.innerHTML =
-  //         `<tr> <td> <button category="attack">Attack</button>Attack </td> </tr>
-  //         <tr> <td> Heal </td> </tr>
-  //         <tr> <td> Defend </td> </tr>`
-  // charProfileDiv.appendChild(spellTable)
+  player.div.appendChild(charProfileDiv)
 
-
-  charProfileDiv.innerHTML +=
-    `<img class="character-image" src="${player.imageUrl}" alt="">
+  let imageDiv = document.createElement('div')
+  imageDiv.innerHTML +=
+    `<img class="character-image" src="${player.imageUrl}" alt=""></img>
       <div class="hc 1">
         <div class="hb 1">
           <center>${player.health} HP</center>
         </div>
-      </div>
-    </div>`
+      </div>`
 
-   player.div.appendChild(charProfileDiv)
+    charProfileDiv.appendChild(imageDiv)
 }
 
-// "id": 1,
-//         "name": "Harry Potter",
-//         "house": "Gryffindor",
-//         "health": 100,
-//         "spells":
 
 
 class Character {
