@@ -4,50 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Barry Otter</title>
+  <title>Barry Otter's Happy Fun Time</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="test-index.css">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <nav>
-    <h1>Welcome To Barry Otter's Happy Fun Time</h1>
-  </nav>
-  <div id="p1-container" class="char-container">
 
-    <div class="character-select">
-      <ul id="p1" class="char-list">
+  <div class="welcome">
+      <h1>Welcome to <br>Barry Otter's Happy Fun Time!</h1>
+  </div>
 
-      </ul>
+<!-- player 1 container -->
+  <div class="card-deck">
+    <div class="card" id="p1-container">
+      <div class="card-header center-align">Player 1</div>
+      <img class="card-img-top" src="https://orig00.deviantart.net/505d/f/2013/343/2/2/8bit_hogwarts_logo__harry_potter_movies__by_g4grottesque-d6xc5bc.png" alt="Default caharacter image">
+      <div class="card-body">
+        <h4 class="card-title">Title</h4>
+        <p class="card-text">This is some text</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"></small>
+      </div>
     </div>
 
-    <!-- <div class="character-profile">
-      <img id="player-1-image" class="character-image" src="" alt="">
-      <div class="hc 1">
-        <div class="hb 1">
-          <center>50 HP</center>
-        </div>
+<!-- battle details -->
+    <div class="card">
+      <div class="card-body" id="game-details">
+        <h4 class="card-title">Select a Character</h4>
+        <p class="card-text">this is some text</p>
       </div>
-    </div> -->
+    </div>
+
+<!-- player 2 container -->
+    <div class="card" id="p2-container">
+      <div class="card-header center-align">Player 2</div>
+      <img class="card-img-top" src="https://orig00.deviantart.net/505d/f/2013/343/2/2/8bit_hogwarts_logo__harry_potter_movies__by_g4grottesque-d6xc5bc.png" alt="Default character image">
+      <div class="card-body">
+        <h4 class="card-title">Title</h4>
+        <p class="card-text">this is some text</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"></small>
+      </div>
+    </div>
 
   </div>
 
-  <div id="p2-container" class="char-container">
 
-    <div class="character-select">
-      <ul id="p2" class="char-list">
-
-      </ul>
-    </div>
-
-    <!-- <div class="character-profile">
-      <div class="hc 2">
-        <div class="hb 2">
-          <center>50 HP</center>
-        </div>
-      </div>
-    </div> -->
-
-  </div>
-  <script src="test-index.js" type="text/javascript"></script>
+  <script src="index.js" type="text/javascript"></script>
 </body>
 </html>
