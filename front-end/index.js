@@ -59,11 +59,15 @@ function characterSelect() {
 }
 
 function characterProfile(player) {
-  player.div.innerHTML = ''
-  let charProfileDiv = document.createElement('div')
-  charProfileDiv.class = 'characterProfile'
+
+  player.div.querySelector('.card-header').innerText = player.name
+  player.div.querySelector('.character-image').src = player.imageUrl
+  let cardBody = player.div.querySelector('.card-body')
+  cardBody.innerHTML = ''
+  let spellTypeDiv = document.createElement('div')
+  spellTypeDiv.class = 'characterProfile spell-type col'
   let actionUL = document.createElement('ul')
-  charProfileDiv.appendChild(actionUL)
+  spellTypeDiv.appendChild(actionUL)
 
   let spellTypes = ["Attack", "Defend", "Heal"]
   for (let type of spellTypes) {
@@ -98,7 +102,7 @@ function characterProfile(player) {
     })
   }
 
-  player.div.appendChild(charProfileDiv)
+  cardBody.appendChild(spellTypeDiv)
 
   let imageDiv = document.createElement('div')
   imageDiv.innerHTML +=
