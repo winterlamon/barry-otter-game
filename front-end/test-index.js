@@ -27,42 +27,42 @@ class Character {
 
 }
 
-class Game {
-  constructor(player1, player2) {
-    this.player1 = player1;
-    this.player2 = player2;
-    this.winner;
-    this.rounds = 1;
-    this.start();
-  }
-
-  start(){
-    // console.log(`${player1.name} and ${player2.name} are in the game.`);
-    while (player1.health > 0 && player2.health > 0) {
-      this.prompt()
-    }
-  }
-
-  prompt(){
-    if (player1.moves.length === this.rounds && player2.moves.length === this.rounds) {
-      this.execute(player1.getMove(), player2.getMove())
-    }
-  }
-
-  execute(){
-    this.rounds++;
-    let p1m = player1.getMove()
-    let p2m = player2.getMove()
-    if (p1m.category === ) {
-
-    }
-
-  }
-
-  save(){
-
-  }
-}
+// class Game {
+//   constructor(player1, player2) {
+//     this.player1 = player1;
+//     this.player2 = player2;
+//     this.winner;
+//     this.rounds = 1;
+//     this.start();
+//   }
+//
+//   start(){
+//     // console.log(`${player1.name} and ${player2.name} are in the game.`);
+//     while (player1.health > 0 && player2.health > 0) {
+//       this.prompt()
+//     }
+//   }
+//
+//   prompt(){
+//     if (player1.moves.length === this.rounds && player2.moves.length === this.rounds) {
+//       this.execute(player1.getMove(), player2.getMove())
+//     }
+//   }
+//
+//   execute(){
+//     this.rounds++;
+//     let p1m = player1.getMove()
+//     let p2m = player2.getMove()
+//     if (p1m.category === ) {
+//
+//     }
+//
+//   }
+//
+//   save(){
+//
+//   }
+// }
 // const p2Container = document.getElementsById('p2-contain')
 
 
@@ -73,6 +73,22 @@ function startup() {
 
   fetch('http://localhost:3000/characters').then(res => res.json()).then(json => createCharacters(json))
 }
+
+  // window.setTimeout(function barryOtter() {
+  //   let specialisRevelio = document.createElement('h4')
+  //   specialisRevelio.setAttribute("id", "barry-otter-text")
+  //   specialisRevelio.innerText = "Specialis Revelio"
+  //   specialisRevelio.addEventListener('click', startup)
+  //   fetch('http://localhost:3000/characters', {
+  //     method: 'post',
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify({name: 'Barry Otter', house: "Mom's Favorite Cohort", health: 100, image_url: 'http://i.imgur.com/SwXoL.jpg'
+  //   })
+  // })
+  //   .then(res => res.json())
+  //   .then(json => createCharacters(json))}, 10000);
+
+
 
 function createCharacters(json) {
   json.forEach(c => {
@@ -98,10 +114,12 @@ function characterSelect() {
         if (charList.id == 'p1') {
           player1 = Object.assign({}, c, {div: document.querySelector('#p1-container')})
           console.log(`player1: ${player1.name}`)
+          document.getElementById('p1-game-details-title').innerText = "Ready Player 1"
           characterProfile(player1)
         } else {
           player2 = Object.assign({}, c, {div: document.querySelector('#p2-container')})
           console.log(`player2: ${player2.name}`)
+          document.getElementById('p2-game-details-title').innerText = "Ready Player 2"
           characterProfile(player2)
         }
 
@@ -121,9 +139,9 @@ function characterSelect() {
 }
 
 function characterProfile(player) {
-  if ((typeof player1 === 'object') && (typeof player2 === 'object')) {
-    let game = new Game(player1, player2)
-  }
+  // if ((typeof player1 === 'object') && (typeof player2 === 'object')) {
+  //   let game = new Game(player1, player2)
+  // }
   player.div.querySelector('.card-header').innerText = player.name
   player.div.querySelector('.character-image').src = player.imageUrl
   let cardBody = player.div.querySelector('.card-body')

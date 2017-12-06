@@ -110,8 +110,28 @@ ul {
     width: 250px;
 }
 
+#p1-game-details {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+}
+
+#p2-game-details {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+}
+
 
 
 .welcome {
   padding: 24px;
+}
+
+
+/* ===== barry otter ===== */
+
+#barry-otter-text {
+  color: white;
+  text-shadow: 1px 1px 1px #999999;
 }
