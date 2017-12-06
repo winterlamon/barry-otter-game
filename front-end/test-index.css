@@ -17,6 +17,16 @@ ul {
   list-style: none;
 }
 
+/*.spell{
+  display: inline-block;
+  float: right;
+}
+
+.spell-type{
+  display: inline-block;
+  float: left;
+}*/
+
 /*.character-image{
   width: 200px;
   border-radius: 20px;
@@ -93,7 +103,13 @@ ul {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
 }
+
+#game-details-card{
+    width: 250px;
+}
+
 
 
 .welcome {
