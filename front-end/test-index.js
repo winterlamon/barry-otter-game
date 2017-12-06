@@ -2,10 +2,75 @@ const store = {characters: []}
 let player1
 let player2
 
+class Character {
+  constructor(id, name, house, health, spells, imageUrl) {
+    this.id = id;
+    this.name = name;
+    this.house = house;
+    this.health = health;
+    this.spells = spells;
+    this.imageUrl = imageUrl;
+    this.moves = [];
+  }
+
+  static all(){
+    return store.characters;
+  }
+
+  makeMove(spell){
+    this.moves.push(spell)
+  }
+
+  getMove(){
+    return this.moves[this.moves.length - 1];
+  }
+
+}
+
+class Game {
+  constructor(player1, player2) {
+    this.player1 = player1;
+    this.player2 = player2;
+    this.winner;
+    this.rounds = 1;
+    this.start();
+  }
+
+  start(){
+    // console.log(`${player1.name} and ${player2.name} are in the game.`);
+    while (player1.health > 0 && player2.health > 0) {
+      this.prompt()
+    }
+  }
+
+  prompt(){
+    if (player1.moves.length === this.rounds && player2.moves.length === this.rounds) {
+      this.execute(player1.getMove(), player2.getMove())
+    }
+  }
+
+  execute(){
+    this.rounds++;
+    let p1m = player1.getMove()
+    let p2m = player2.getMove()
+    if (p1m.category === ) {
+
+    }
+
+  }
+
+  save(){
+
+  }
+}
+// const p2Container = document.getElementsById('p2-contain')
+
+
 document.addEventListener('DOMContentLoaded', startup)
 
 function startup() {
   console.log('hi')
+
   fetch('http://localhost:3000/characters').then(res => res.json()).then(json => createCharacters(json))
 }
 
@@ -18,7 +83,9 @@ function createCharacters(json) {
 
 function characterSelect() {
   let charLists = [...document.getElementsByClassName('char-list')]
+  // debugger;
   charLists.forEach(charList => {
+    // debugger;
     for (let c of Character.all()) {
       let charButton = document.createElement('button')
       charButton.setAttribute('char-id', c.id)
@@ -40,6 +107,12 @@ function characterSelect() {
 
         // event.target.disabled = true;
       })
+        charButton.addEventListener('mouseover', event => {
+          charList.parentElement.parentElement.querySelector('.character-image').src = c.imageUrl
+        })
+
+
+
       let charRow = document.createElement('tr')
       charRow.appendChild(charButton)
       charList.appendChild(charRow)
@@ -48,11 +121,18 @@ function characterSelect() {
 }
 
 function characterProfile(player) {
-  player.div.innerHTML = ''
-  let charProfileDiv = document.createElement('div')
-  charProfileDiv.class = 'characterProfile'
+  if ((typeof player1 === 'object') && (typeof player2 === 'object')) {
+    let game = new Game(player1, player2)
+  }
+  player.div.querySelector('.card-header').innerText = player.name
+  player.div.querySelector('.character-image').src = player.imageUrl
+  let cardBody = player.div.querySelector('.card-body')
+  cardBody.innerHTML = ''
+  let spellTypeDiv = document.createElement('div')
+  // spellTypeDiv.class = 'characterProfile spell-type col'
+  spellTypeDiv.setAttribute('class', 'characterProfile spell-type col')
   let actionUL = document.createElement('ul')
-  charProfileDiv.appendChild(actionUL)
+  spellTypeDiv.appendChild(actionUL)
 
   let spellTypes = ["Attack", "Defend", "Heal"]
   for (let type of spellTypes) {
@@ -65,13 +145,17 @@ function characterProfile(player) {
     typeButton.addEventListener('click', (event) => {
       let spellList = player.spells.filter(spell => (spell.category === type.toLowerCase()));
       // debugger
-      let existingSpell = player.div.querySelector('.spell-ul')
+      let existingSpell = player.div.querySelector('.spell')
         if (existingSpell) {
           existingSpell.remove()
         }
+        let spellDiv = document.createElement('div')
+        // spellDiv.class = 'characterProfile spell col'
+        spellDiv.setAttribute('class', "characterProfile col spell")
         let spellUL = document.createElement('ul');
         spellUL.setAttribute('class', "spell-ul")
-      buttonLi.appendChild(spellUL)
+      spellDiv.appendChild(spellUL)
+      cardBody.appendChild(spellDiv)
       console.log(spellUL)
       for (let spell of spellList) {
         let spellButtonLi = document.createElement('li');
@@ -87,7 +171,7 @@ function characterProfile(player) {
     })
   }
 
-  player.div.appendChild(charProfileDiv)
+  cardBody.appendChild(spellTypeDiv)
 
   let imageDiv = document.createElement('div')
   imageDiv.innerHTML +=
@@ -98,23 +182,11 @@ function characterProfile(player) {
         </div>
       </div>`
 
-    charProfileDiv.appendChild(imageDiv)
+    // charProfileDiv.appendChild(imageDiv)
 }
 
-
-
-class Character {
-  constructor(id, name, house, health, spells, imageUrl) {
-    this.id = id;
-    this.name = name;
-    this.house = house;
-    this.health = health;
-    this.spells = spells;
-    this.imageUrl = imageUrl;
-  }
-
-  static all(){
-    return store.characters;
-  }
-
-}
+// "id": 1,
+//         "name": "Harry Potter",
+//         "house": "Gryffindor",
+//         "health": 100,
+//         "spells":
