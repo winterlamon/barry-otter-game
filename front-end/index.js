@@ -46,6 +46,11 @@ function characterSelect() {
 
         // event.target.disabled = true;
       })
+
+      charButton.addEventListener('mouseover', event => {
+        document.querySelector('.character-image').src = c.imageUrl
+      })
+
       let charRow = document.createElement('tr')
       charRow.appendChild(charButton)
       charList.appendChild(charRow)
