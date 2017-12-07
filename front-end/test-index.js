@@ -143,9 +143,9 @@ class Game {
   refresh(){
     setTimeout(() => {
       this.print(`Round ${this.rounds}`)
-      player1.print(`Select A Spell!`)
+      player1.print(`Select a spell!`)
       player1.printText(``)
-      player2.print(`Select A Spell!`)
+      player2.print(`Select a spell!`)
       player2.printText(``)
       // this.refresh()
     }, 7000)

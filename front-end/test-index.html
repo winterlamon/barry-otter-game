@@ -22,10 +22,10 @@
 
 <body>
   <audio src="./assets/theme.mp3" autoplay loop hidden="true"></audio>
+  <button type="button" id="mute" name="mute">
+    <i class="fa fa-volume-up"></i>
+  </button>
   <div class="welcome">
-    <button type="button" id="mute" name="mute">
-      <i class="fa fa-volume-up"></i>
-    </button>
     <h1>Welcome to <br>Barry Otter & the Joys of Javascript</h1>
   </div>
 
@@ -42,12 +42,11 @@
         </small>
       </div>
       <img class="card-img-top character-image" src="https://orig00.deviantart.net/505d/f/2013/343/2/2/8bit_hogwarts_logo__harry_potter_movies__by_g4grottesque-d6xc5bc.png" alt="Default caharacter image">
-      <div class="card-body row">
+      <div class="card-body row player-card-body">
         <h4 class="card-title"></h4>
         <p class="card-text"></p>
         <!-- <div class="character-select"> -->
         <ul id="p1" class="char-list">
-
         </ul>
         <!-- </div> -->
       </div>
@@ -78,11 +77,10 @@
         </small>
       </div>
       <img class="card-img-top character-image" src="https://orig00.deviantart.net/505d/f/2013/343/2/2/8bit_hogwarts_logo__harry_potter_movies__by_g4grottesque-d6xc5bc.png" alt="Default character image">
-      <div class="card-body row">
+      <div class="card-body row player-card-body">
         <h4 class="card-title"></h4>
         <p class="card-text"></p>
         <ul id="p2" class="char-list">
-
         </ul>
       </div>
     </div>
