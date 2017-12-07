@@ -54,6 +54,12 @@ class Character {
 
   damage(strength){
     this.health -= strength
+    if (this.health < 0) {
+      this.health = 0
+    }
+    let pb = this.div.querySelector('.progress-bar')
+    pb.innerText = `${this.health} HP`
+    pb.style.width = `${this.health}%`
   }
 
   print(thing){
@@ -71,6 +77,7 @@ class Game {
     this.player2 = player2;
     this.winner;
     this.rounds = 1;
+    this.div = document.querySelector('#game-details-card')
     // this.start();
   }
 
@@ -93,7 +100,12 @@ class Game {
   //   // }
   // }
 
+  print(thing){
+    this.div.querySelector('.card-header').innerText = thing;
+  }
+
   execute(){
+
     this.rounds++;
     let p1m = player1.getMove()
     let p2m = player2.getMove()
@@ -114,20 +126,52 @@ class Game {
       p2m['attack'] = 0
     }
 
-    player1.damage(p2m['attack'])
-    player2.damage(p1m['attack'])
 
     player1.heal(p1m['heal'])
     player2.heal(p2m['heal'])
+
+    player1.damage(p2m['attack'])
+    player2.damage(p1m['attack'])
 
     player1.print(`${player1.lastSpell().name}!`)
     player1.printText(`${player1.name} ${player1.lastSpell().effect}.\n${player2.name} took ${p1m['attack']} damage!`)
     player2.print(`${player2.lastSpell().name}!`)
     player2.printText(`${player2.name} ${player2.lastSpell().effect}.\n${player1.name} took ${p2m['attack']} damage!`)
+    this.checkOver()
+  }
+
+  refresh(){
+    setTimeout(() => {
+      this.print(`Round ${this.rounds}`)
+      player1.print(`Select A Spell!`)
+      player1.printText(``)
+      player2.print(`Select A Spell!`)
+      player2.printText(``)
+      // this.refresh()
+    }, 5000)
+  }
+
+  checkOver(){
+    if (player1.isAlive() && player2.isAlive()) {
+        this.refresh()
+      }else{
+        this.end()
+      }
   }
 
   end(){
-    console.log('game over')
+    this.print('Game Over!')
+    if (player1.isAlive()) {
+      player1.print(`You Win!`)
+      player1.printText(`${player1.name} Has Emerged Victorious!\nLong Live ${player1.house}!`)
+      player2.print(`You Lose!`)
+      player2.printText(`${player2.name} Has Perished!\nA Dark Day Indeed For ${player2.house}!`)
+    }else{
+      player2.print(`You Win!`)
+      player2.printText(`${player2.name} Has Emerged Victorious!\nLong Live ${player2.house}!`)
+      player1.print(`You Lose!`)
+      player1.printText(`${player1.name} Has Perished!\nA Dark Day Indeed For ${player1.house}!`)
+    }
   }
 
   save(){
