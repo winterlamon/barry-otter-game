@@ -213,6 +213,14 @@ button:active {
   padding: 24px;
 }
 
+.fa{
+  font-size: 40px;
+}
+
+#mute{
+  width: 60px;
+}
+
 
 /* ===== barry otter ===== */
 
