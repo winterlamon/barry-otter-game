@@ -162,14 +162,14 @@ class Game {
   end(){
     this.print('Game Over!')
     if (player1.isAlive()) {
-      player1.print(`You Win!`)
+      player1.print(`Player 1 Wins!`)
       player1.printText(`${player1.name} has emerged victorious!\nLong live ${player1.house}!`)
-      player2.print(`You Lose!`)
+      player2.print(`Player 2 Loses!`)
       player2.printText(`${player2.name} has perished!\nA dark day indeed for ${player2.house}!`)
     }else{
-      player2.print(`You Win!`)
+      player2.print(`Player 2 Wins!`)
       player2.printText(`${player2.name} has emerged victorious!\nLong live ${player2.house}!`)
-      player1.print(`You Lose!`)
+      player1.print(`Player 1 Loses!`)
       player1.printText(`${player1.name} has perished!\nA dark day indeed for ${player1.house}!`)
     }
   }

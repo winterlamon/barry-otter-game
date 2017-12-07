@@ -4,6 +4,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  font-size: 32px;
   text-align: center;
   color: #941B08;
   text-shadow: 2px 2px 2px gold;
@@ -20,7 +21,9 @@ body {
 }
 
 .col {
-  background-color: lime;
+  /*background-color: lime;*/
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 /*http://i.imgur.com/0K1CoIw.jpg*/
@@ -30,6 +33,11 @@ body {
 
 ul {
   list-style: none;
+  padding: 0px;
+}
+
+.row {
+  align-items: center;
 }
 
 button {
@@ -204,6 +212,10 @@ button:active {
 
 .progress {
   background-color: red;
+}
+
+.progress-bar {
+  font-size: 12px;
 }
 
 /* ===== */
