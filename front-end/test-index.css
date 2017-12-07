@@ -92,6 +92,10 @@ button:active {
 
 }
 
+.char-list{
+  margin: auto;
+}
+
 #p1-container.card-header{
     display: inline-block;
     background-color: #F7F778;
@@ -100,6 +104,7 @@ button:active {
 
 #p2-container{
     display: inline-block;
+    margin: auto;
     /*background-color: #941B08;*/
 
 }
@@ -142,14 +147,13 @@ button:active {
 }
 
 .card-body {
-  background-color: #FFFFFF;
+  background-color: blue;
   text-align: center;
   border: 1px solid #666666;
   border-top-style: solid;
   border-bottom: none;
   border-left: none;
   border-right: none;
-  width: 100%;
   align-items: center;
 }
 
@@ -190,20 +194,20 @@ button:active {
 
 #game-details-card{
     vertical-align: middle;
-    width: 75%;
+    width: 20%
 }
 
 #p1-game-details {
   text-align: center;
   top: 50%;
-  left: 50%;
+  left: 40%;
   vertical-align: middle;
 }
 
 #p2-game-details {
   text-align: center;
   top: 50%;
-  left: 50%;
+  left: 40%;
   vertical-align: middle;
 
 }

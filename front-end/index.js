@@ -103,7 +103,6 @@ class Game {
     //   }
     // }
 
-    debugger;
     p1m['attack'] -= p2m['defend'];
     p2m['attack'] -= p1m['defend'];
 
