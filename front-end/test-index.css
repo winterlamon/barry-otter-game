@@ -60,6 +60,11 @@ button:hover {
   color: #941B08;
 }
 
+button.current {
+  background-color: gold;
+  color: #941B08;
+}
+
 button:active {
   background-color: gold;
   box-shadow: 0 5px #666;

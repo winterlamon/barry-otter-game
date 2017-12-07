@@ -3,6 +3,15 @@ let player1
 let player2
 let game
 
+// class Player {
+//   constructor(character) {
+//     this.character = character;
+//     this.spells = chracter.spells;
+//     this.
+//     this.moves = [];
+//   }
+// }
+
 class Character {
   constructor(id, name, house, health, spells, imageUrl) {
     this.id = id;
@@ -80,25 +89,6 @@ class Game {
     this.div = document.querySelector('#game-details-card')
     // this.start();
   }
-
-  // start(){
-  //   // console.log(`${player1.name} and ${player2.name} are in the game.`);
-  //   if (player1.isAlive() && player2.isAlive()) {
-  //     this.prompt()
-  //   }
-  //   else{
-  //     this.end()
-  //   }
-  // }
-
-  // prompt(){
-  //   if (player1.moves.length === this.rounds && player2.moves.length === this.rounds) {
-  //     this.execute(player1.getMove(), player2.getMove())
-  //   }
-  //   // else{
-  //   //   this.prompt()
-  //   // }
-  // }
 
   print(thing){
     this.div.querySelector('.card-header').innerText = thing;
@@ -194,6 +184,8 @@ function startup() {
     }
 
   })
+
+
   console.log('hi')
 
   fetch('http://localhost:3000/characters').then(res => res.json()).then(json => createCharacters(json))
@@ -244,7 +236,78 @@ function characterSelect() {
       charList.appendChild(charRow)
       }
     })
+
+    keyNav(1)
+    keyNav(2)
+
 }
+
+function keyNav(p){
+  let navArray;
+  if (p === 1) {
+    navArray = ['#p1-container', 38, 40, 37, 39, 16]
+  } else {
+
+  }
+  let current = document.querySelector('#p1-container').querySelector('button')
+  current.className = 'current'
+
+  document.addEventListener('keydown', e => {
+  // e.preventDefault();
+  switch (e.keyCode) {
+    case 38:
+    // UP
+    e.preventDefault();
+    current.className = ''
+    if (current.parentElement.previousElementSibling) {
+      current = current.parentElement.previousElementSibling.firstChild
+    }else {
+      current = current.parentElement.parentElement.lastElementChild.lastElementChild
+    }
+    current.className = 'current'
+
+    break;
+    case 40:
+    e.preventDefault();
+    // DOWN
+    current.className = ''
+    if (current.parentElement.nextElementSibling) {
+      current = current.parentElement.nextElementSibling.firstChild
+    }else {
+      current = current.parentElement.parentElement.firstElementChild.firstElementChild
+    }
+    current.className = 'current'
+    break;
+    case 37:
+    //LEFT
+    if (current.parentElement.parentElement.parentElement.previousElementSibling) {
+      current.className = ''
+      current = current.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.firstElementChild
+      current.className = 'current'
+    }
+    break;
+    case 39:
+    //RIGHT
+    if (current.parentElement.parentElement.parentElement.nextElementSibling) {
+      current.className = ''
+      current = current.parentElement.parentElement.parentElement.nextElementSibling.firstElementChild.firstElementChild.firstElementChild
+      current.className = 'current'
+    }
+    break;
+    case 16:
+    //SHIFT
+    current.click()
+    if (current.parentElement.tagName == 'TR') {
+      current.className = ''
+      current = document.querySelector('#p1-container').querySelector('button')
+      current.className = 'current'
+    }
+    break;
+    // default:
+
+  }
+})}
+
 
 function characterProfile(player) {
   if ((typeof player1 === 'object') && (typeof player2 === 'object')) {
