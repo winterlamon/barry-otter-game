@@ -115,7 +115,7 @@ class Game {
     //   }
     // }
 
-    debugger;
+
     p1m['attack'] -= p2m['defend'];
     p2m['attack'] -= p1m['defend'];
 
@@ -148,7 +148,7 @@ class Game {
       player2.print(`Select A Spell!`)
       player2.printText(``)
       // this.refresh()
-    }, 7000)
+    }, 5000)
   }
 
   checkOver(){
@@ -166,17 +166,33 @@ class Game {
       player1.printText(`${player1.name} has emerged victorious!\nLong live ${player1.house}!`)
       player2.print(`Player 2 Loses!`)
       player2.printText(`${player2.name} has perished!\nA dark day indeed for ${player2.house}!`)
-    }else{
+      this.save(player1)
+    }
+    else{
       player2.print(`Player 2 Wins!`)
       player2.printText(`${player2.name} has emerged victorious!\nLong live ${player2.house}!`)
       player1.print(`Player 1 Loses!`)
       player1.printText(`${player1.name} has perished!\nA dark day indeed for ${player1.house}!`)
+      this.save(player2)
     }
   }
 
-  save(){
-
+  save(winner){
+    let options =
+    {
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify({character_id: winner.id})
+    }
+    fetch("http://localhost:3000/games", options)
+    .then(res => res.json())
+    .then(json => console.log(json))
   }
+
+
 }
 
 
