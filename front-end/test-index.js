@@ -184,6 +184,14 @@ class Game {
 document.addEventListener('DOMContentLoaded', startup)
 
 function startup() {
+  document.getElementById('mute').addEventListener('click', () => {
+    if (!document.querySelector('audio').muted) {
+      document.querySelector('audio').muted = true;
+    }else {
+      document.querySelector('audio').muted = false;
+    }
+
+  })
   console.log('hi')
 
   fetch('http://localhost:3000/characters').then(res => res.json()).then(json => createCharacters(json))
