@@ -4,18 +4,52 @@ html, body, h1, h2, h3, h4, h5, h6 {
 
 h1 {
   text-align: center;
-  color: black;
+  color: #941B08;
+  text-shadow: 2px 2px 2px gold;
+
 }
 
 body {
   background-color: white;
   /*padding-left: 8px;*/
+  background-image: url(http://i.imgur.com/0K1CoIw.jpg);
+  background-position: top;
+  background-size: cover;
+  align-self: center;
 }
+
+/*http://i.imgur.com/0K1CoIw.jpg*/
+
+/*http://www.powerpointhintergrund.com/uploads/2017/07/mega-yo-hace-m-s-de-2-a-os-0-29.png*/
 
 
 ul {
   list-style: none;
 }
+
+button {
+  display: inline-block;
+  /*padding: 10px 20px;
+  font-size: 18px;*/
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #941B08;
+  border: 8px;
+  border-radius: 0px;
+  margin-bottom: 10px;
+}
+
+button:hover {background-color: #3e8e41}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 
 /*.spell{
   display: inline-block;
@@ -27,34 +61,6 @@ ul {
   float: left;
 }*/
 
-/*.character-image{
-  width: 200px;
-  border-radius: 20px;
-  display: inline-block;
-  float: right;
-  margin: 30px;
-}*/
-
-/*.char-list{
-  background-color: #941B08;
-}*/
-
-.hc{
-  width: 200px;
-  height: 20px;
-  background-color: lightblue;
-  border-radius: 20px;
-  border-width: 5px;
-  border-color: black;
-  margin: 30px;
-}
-
-.hb{
-  width: 100px;
-  height: 20px;
-  background-color: lightgreen;
-  border-radius: 20px;
-}
 
 .char-container {
     /*display: inline-block;*/
@@ -90,7 +96,23 @@ ul {
 
 /* ===== cards ===== */
 
+.card-deck {
+  width: 95%;
+  align-items: flex-start;
+  /*align-self: center;*/
+  /*align-content: center;*/
+}
+
+
+.card {
+  border: 4px solid #941B08;
+}
+
 .card-header {
+  text-align: center;
+}
+
+.card-body {
   text-align: center;
 }
 
@@ -107,19 +129,23 @@ ul {
 }
 
 #game-details-card{
-    width: 250px;
+    vertical-align: middle;
+    width: 75%;
 }
 
 #p1-game-details {
   text-align: center;
   top: 50%;
   left: 50%;
+  vertical-align: middle;
 }
 
 #p2-game-details {
   text-align: center;
   top: 50%;
   left: 50%;
+  vertical-align: middle;
+
 }
 
 /* ===== progress bar ===== */
@@ -127,6 +153,8 @@ ul {
 .progress {
   background-color: red;
 }
+
+/* ===== */
 
 
 .welcome {
