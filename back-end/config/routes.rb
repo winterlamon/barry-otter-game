@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :games
   resources :character_spells
   resources :characters
   resources :spells

@@ -257,6 +257,11 @@ function characterSelect() {
     let kn2 = new KeyNav(2)
 
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> staging
 
 
 
