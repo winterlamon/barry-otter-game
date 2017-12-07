@@ -105,7 +105,7 @@ class Game {
     //   }
     // }
 
-    debugger;
+
     p1m['attack'] -= p2m['defend'];
     p2m['attack'] -= p1m['defend'];
 
@@ -133,12 +133,12 @@ class Game {
   refresh(){
     setTimeout(() => {
       this.print(`Round ${this.rounds}`)
-      player1.print(`Select A Spell!`)
+      player1.print(`Select a spell!`)
       player1.printText(``)
-      player2.print(`Select A Spell!`)
+      player2.print(`Select a spell!`)
       player2.printText(``)
       // this.refresh()
-    }, 7000)
+    }, 5000)
   }
 
   checkOver(){
@@ -156,17 +156,33 @@ class Game {
       player1.printText(`${player1.name} has emerged victorious!\nLong live ${player1.house}!`)
       player2.print(`Player 2 Loses!`)
       player2.printText(`${player2.name} has perished!\nA dark day indeed for ${player2.house}!`)
-    }else{
+      this.save(player1)
+    }
+    else{
       player2.print(`Player 2 Wins!`)
       player2.printText(`${player2.name} has emerged victorious!\nLong live ${player2.house}!`)
       player1.print(`Player 1 Loses!`)
       player1.printText(`${player1.name} has perished!\nA dark day indeed for ${player1.house}!`)
+      this.save(player2)
     }
   }
 
-  save(){
-
+  save(winner){
+    let options =
+    {
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify({character_id: winner.id})
+    }
+    fetch("http://localhost:3000/games", options)
+    .then(res => res.json())
+    .then(json => console.log(json))
   }
+
+
 }
 
 
@@ -241,82 +257,6 @@ function characterSelect() {
     let kn2 = new KeyNav(2)
 
 }
-class KeyNav {
-  constructor(p) {
-    this.p = p
-    this.make()
-  }
-
-  make(){
-    let navArray;
-    if (this.p === 2) {
-      navArray = ['#p2-container', 38, 40, 37, 39, 16]
-    } else {
-      navArray = ['#p1-container', 87, 83, 65, 68, 9]
-    }
-    let current = document.querySelector(navArray[0]).querySelector('button')
-    current.className = 'current'
-
-    document.addEventListener('keydown', e => {
-    // e.preventDefault();
-    switch (e.keyCode) {
-      case navArray[1]:
-      // UP
-      e.preventDefault();
-      current.className = ''
-      if (current.parentElement.previousElementSibling) {
-        current = current.parentElement.previousElementSibling.firstChild
-      }else {
-        current = current.parentElement.parentElement.lastElementChild.lastElementChild
-      }
-      current.className = 'current'
-
-      break;
-      case navArray[2]:
-      e.preventDefault();
-      // DOWN
-      current.className = ''
-      if (current.parentElement.nextElementSibling) {
-        current = current.parentElement.nextElementSibling.firstChild
-      }else {
-        current = current.parentElement.parentElement.firstElementChild.firstElementChild
-      }
-      current.className = 'current'
-      break;
-      case navArray[3]:
-      e.preventDefault();
-      //LEFT
-      if (current.parentElement.parentElement.parentElement.previousElementSibling) {
-        current.className = ''
-        current = current.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.firstElementChild
-        current.className = 'current'
-      }
-      break;
-      case navArray[4]:
-      e.preventDefault();
-      //RIGHT
-      if (current.parentElement.parentElement.parentElement.nextElementSibling) {
-        current.className = ''
-        current = current.parentElement.parentElement.parentElement.nextElementSibling.firstElementChild.firstElementChild.firstElementChild
-        current.className = 'current'
-      }
-      break;
-      case navArray[5]:
-      e.preventDefault();
-      //SHIFT
-      current.click()
-      if (current.parentElement.tagName == 'TR') {
-        current.className = ''
-        current = document.querySelector(navArray[0]).querySelector('button')
-        current.className = 'current'
-      }
-      break;
-      // default:
-
-    }
-  })}
-}
-
 
 
 
