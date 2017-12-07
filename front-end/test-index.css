@@ -1,5 +1,6 @@
 html, body, h1, h2, h3, h4, h5, h6 {
   font-family: 'Press Start 2P', cursive;
+  /*font-family: 'Roboto', sans-serif;*/
 }
 
 h1 {
@@ -16,6 +17,10 @@ body {
   background-position: top;
   background-size: cover;
   align-self: center;
+}
+
+.col {
+  background-color: lime;
 }
 
 /*http://i.imgur.com/0K1CoIw.jpg*/
@@ -35,17 +40,20 @@ button {
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #fff;
+  color: gold;
   background-color: #941B08;
   border: 8px;
   border-radius: 0px;
   margin-bottom: 10px;
 }
 
-button:hover {background-color: #3e8e41}
+button:hover {
+  background-color: gold;
+  color: #941B08;
+}
 
 button:active {
-  background-color: #3e8e41;
+  background-color: gold;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -76,6 +84,12 @@ button:active {
 
 }
 
+#p1-container.card-header{
+    display: inline-block;
+    background-color: #F7F778;
+
+}
+
 #p2-container{
     display: inline-block;
     /*background-color: #941B08;*/
@@ -103,16 +117,37 @@ button:active {
   /*align-content: center;*/
 }
 
-
 .card {
-  border: 4px solid #941B08;
+  background-color: #000000;
+  border: 4px solid #000000;
+
 }
 
 .card-header {
+  background-color: #000000;
+  border-radius: 2px;
+  color: #FFFFFF;
   text-align: center;
+  top: 50%;
+  left: 50%;
+  vertical-align: middle;
 }
 
 .card-body {
+  background-color: #FFFFFF;
+  text-align: center;
+  border: 1px solid #666666;
+  border-top-style: solid;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  align-items: center;
+}
+
+.card-footer {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #666666;
   text-align: center;
 }
 
@@ -120,12 +155,29 @@ button:active {
   height: 300px;
 }
 
+/*#p1-header {
+  background-color: #F7F778;
+}
+
+#p2-header {
+  background-color: #78B7F7;
+}*/
+
 #game-details {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
+}
+
+#game-header {
+  background-color: #000000;
+  color: #FFFFFF;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  vertical-align: middle;
 }
 
 #game-details-card{

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="test-index.css">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
@@ -16,17 +17,24 @@
 </head>
 
 <body>
-  <center>
   <audio src="./assets/theme.mp3" autoplay loop hidden="true"></audio>
   <div class="welcome">
     <button type="button" id="mute" name="mute">Mute</button>
     <h1>Welcome to <br>Barry Otter's Happy Fun Time!</h1>
   </div>
 
+  <center>
   <div class="card-deck">
     <!-- player 1 container -->
     <div class="card" id="p1-container">
-      <div class="card-header">Player 1</div>
+      <div class="card-header" id="p1-header">Player 1</div>
+      <div class="card-footer">
+        <small class="text-muted">
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100 HP</div>
+          </div>
+        </small>
+      </div>
       <img class="card-img-top character-image" src="https://orig00.deviantart.net/505d/f/2013/343/2/2/8bit_hogwarts_logo__harry_potter_movies__by_g4grottesque-d6xc5bc.png" alt="Default caharacter image">
       <div class="card-body row">
         <h4 class="card-title"></h4>
@@ -37,18 +45,11 @@
         </ul>
         <!-- </div> -->
       </div>
-      <div class="card-footer">
-        <small class="text-muted">
-          <div class="progress">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100 HP</div>
-          </div>
-        </small>
-      </div>
     </div>
 
     <!-- battle details -->
     <div class="card" id="game-details-card">
-      <div class="card-header center-align">Round 1</div>
+      <div class="card-header" id="game-header">Round 1</div>
       <div class="card-body" id="p1-game-details">
         <h4 class="card-title" id="p1-game-details-title">Player 1, select a character.</h4>
         <p class="card-text"></p>
@@ -62,7 +63,14 @@
 
     <!-- player 2 container -->
     <div class="card" id="p2-container">
-      <div class="card-header center-align">Player 2</div>
+      <div class="card-header" id="p2-header">Player 2</div>
+      <div class="card-footer">
+        <small class="text-muted">
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100 HP</div>
+          </div>
+        </small>
+      </div>
       <img class="card-img-top character-image" src="https://orig00.deviantart.net/505d/f/2013/343/2/2/8bit_hogwarts_logo__harry_potter_movies__by_g4grottesque-d6xc5bc.png" alt="Default character image">
       <div class="card-body row">
         <h4 class="card-title"></h4>
@@ -70,13 +78,6 @@
         <ul id="p2" class="char-list">
 
         </ul>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">
-          <div class="progress">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100 HP</div>
-          </div>
-        </small>
       </div>
     </div>
 
