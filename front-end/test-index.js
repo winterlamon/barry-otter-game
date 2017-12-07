@@ -148,7 +148,7 @@ class Game {
       player2.print(`Select A Spell!`)
       player2.printText(``)
       // this.refresh()
-    }, 5000)
+    }, 7000)
   }
 
   checkOver(){
@@ -163,14 +163,14 @@ class Game {
     this.print('Game Over!')
     if (player1.isAlive()) {
       player1.print(`You Win!`)
-      player1.printText(`${player1.name} Has Emerged Victorious!\nLong Live ${player1.house}!`)
+      player1.printText(`${player1.name} has emerged victorious!\nLong live ${player1.house}!`)
       player2.print(`You Lose!`)
-      player2.printText(`${player2.name} Has Perished!\nA Dark Day Indeed For ${player2.house}!`)
+      player2.printText(`${player2.name} has perished!\nA dark day indeed for ${player2.house}!`)
     }else{
       player2.print(`You Win!`)
-      player2.printText(`${player2.name} Has Emerged Victorious!\nLong Live ${player2.house}!`)
+      player2.printText(`${player2.name} has emerged victorious!\nLong live ${player2.house}!`)
       player1.print(`You Lose!`)
-      player1.printText(`${player1.name} Has Perished!\nA Dark Day Indeed For ${player1.house}!`)
+      player1.printText(`${player1.name} has perished!\nA dark day indeed for ${player1.house}!`)
     }
   }
 
@@ -187,10 +187,10 @@ function startup() {
   document.getElementById('mute').addEventListener('click', () => {
     if (!document.querySelector('audio').muted) {
       document.querySelector('audio').muted = true;
-      document.querySelector('#mute').innerHTML = '<i class="fa fa-volume-up"></i>'
+      document.querySelector('#mute').innerHTML = '<i class="fa fa-volume-off"></i>'
     }else {
       document.querySelector('audio').muted = false;
-      document.querySelector('#mute').innerHTML = '<i class="fa fa-volume-off"></i>'
+      document.querySelector('#mute').innerHTML = '<i class="fa fa-volume-up"></i>'
     }
 
   })
