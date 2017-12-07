@@ -1,22 +1,43 @@
-body {
+html, body, h1, h2, h3, h4, h5, h6 {
   font-family: 'Press Start 2P', cursive;
 }
+
+h1 {
+  text-align: center;
+  color: black;
+}
+
+body {
+  background-color: white;
+  /*padding-left: 8px;*/
+}
+
 
 ul {
   list-style: none;
 }
 
-.character-image{
+/*.spell{
+  display: inline-block;
+  float: right;
+}
+
+.spell-type{
+  display: inline-block;
+  float: left;
+}*/
+
+/*.character-image{
   width: 200px;
   border-radius: 20px;
   display: inline-block;
   float: right;
   margin: 30px;
-}
+}*/
 
-.char-list{
-  background-color: red;
-}
+/*.char-list{
+  background-color: #941B08;
+}*/
 
 .hc{
   width: 200px;
@@ -35,22 +56,62 @@ ul {
   border-radius: 20px;
 }
 
+.char-container {
+    /*display: inline-block;*/
+    /*float: right;*/
+    width: 500px;
+    background-color: #941B08;
+}
+
+
 #p1-container{
     display: inline-block;
-    float: left;
-    width: 500px;
-    background-color: red;
-    border-radius: 20px;
+    /*background-color: #941B08;*/
+
 }
 
 #p2-container{
     display: inline-block;
-    float: right;
-    width: 500px;
-    background-color: red;
-    border-radius: 20px;
+    /*background-color: #941B08;*/
+
 }
 
 .charButton{
   display: inline;
+}
+
+.logo{
+  width: 100px;
+  border-radius: 20px;
+  display: inline-block;
+  /*float: right;
+  margin: 30px;*/
+}
+
+/* ===== cards ===== */
+
+.card-header {
+  text-align: center;
+}
+
+.card-img-top {
+  height: 300px;
+}
+
+#game-details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#game-details-card{
+    width: 250px;
+}
+
+
+
+.welcome {
+  padding: 24px;
 }
