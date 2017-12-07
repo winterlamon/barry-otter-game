@@ -187,10 +187,10 @@ function startup() {
   document.getElementById('mute').addEventListener('click', () => {
     if (!document.querySelector('audio').muted) {
       document.querySelector('audio').muted = true;
-      document.querySelector('#mute').innerHTML = 'Mute <i class="fa fa-volume-up"></i>'
+      document.querySelector('#mute').innerHTML = '<i class="fa fa-volume-up"></i>'
     }else {
       document.querySelector('audio').muted = false;
-      document.querySelector('#mute').innerHTML = 'Mute <i class="fa fa-volume-off"></i>'
+      document.querySelector('#mute').innerHTML = '<i class="fa fa-volume-off"></i>'
     }
 
   })
