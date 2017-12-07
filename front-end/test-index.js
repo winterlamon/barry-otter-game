@@ -3,208 +3,26 @@ let player1
 let player2
 let game
 
-// class Player {
-//   constructor(character) {
-//     this.character = character;
-//     this.spells = chracter.spells;
-//     this.
-//     this.moves = [];
-//   }
-// }
-
-class Character {
-  constructor(id, name, house, health, spells, imageUrl) {
-    this.id = id;
-    this.name = name;
-    this.house = house;
-    this.health = health;
-    this.spells = spells;
-    this.imageUrl = imageUrl;
-    this.moves = [];
-  }
-
-  static all(){
-    return store.characters;
-  }
-
-  makeMove(spell){
-    this.moves.push(spell)
-  }
-
-  lastSpell(){
-    return this.moves[this.moves.length - 1]
-  }
-
-  prevMove(){
-    // let move = this.moves[this.moves.length - 1];
-    let move = this.lastSpell();
-    let moveObj = {}
-    moveObj[move['category']] = move['strength']
-    return  moveObj;
-  }
-
-  getMove(){
-    let generic = {'attack': 0, 'defend':0, 'heal':0}
-    let newMove = this.prevMove()
-    let move = Object.assign(generic, newMove)
-    return move;
-  }
-
-  isAlive(){
-    return this.health > 0;
-  }
-
-  heal(strength){
-    this.health += strength
-    if (this.health > 100) {
-      this.health = 100
-    }
-  }
-
-  damage(strength){
-    this.health -= strength
-    if (this.health < 0) {
-      this.health = 0
-    }
-    let pb = this.div.querySelector('.progress-bar')
-    pb.innerText = `${this.health} HP`
-    pb.style.width = `${this.health}%`
-  }
-
-  print(thing){
-    this.gameDiv.innerText = thing;
-  }
-
-  printText(thing){
-    this.gameDiv.nextElementSibling.innerText = thing;
-  }
-}
-
-class Game {
-  constructor(player1, player2) {
-    this.player1 = player1;
-    this.player2 = player2;
-    this.winner;
-    this.rounds = 1;
-    this.div = document.querySelector('#game-details-card')
-    // this.start();
-  }
-
-  print(thing){
-    this.div.querySelector('.card-header').innerText = thing;
-  }
-
-  execute(){
-
-    this.rounds++;
-    let p1m = player1.getMove()
-    let p2m = player2.getMove()
-    // if (p1m.category === 'defense') {
-    //   if (p2m.category === 'attack') {
-    //
-    //   }
-    // }
-
-
-    p1m['attack'] -= p2m['defend'];
-    p2m['attack'] -= p1m['defend'];
-
-    if (p1m['attack'] < 0) {
-      p1m['attack'] = 0
-    }
-    if (p2m['attack'] < 0) {
-      p2m['attack'] = 0
-    }
-
-
-    player1.heal(p1m['heal'])
-    player2.heal(p2m['heal'])
-
-    player1.damage(p2m['attack'])
-    player2.damage(p1m['attack'])
-
-    player1.print(`${player1.lastSpell().name}!`)
-    player1.printText(`${player1.name} ${player1.lastSpell().effect}.\n${player2.name} took ${p1m['attack']} damage!`)
-    player2.print(`${player2.lastSpell().name}!`)
-    player2.printText(`${player2.name} ${player2.lastSpell().effect}.\n${player1.name} took ${p2m['attack']} damage!`)
-    this.checkOver()
-  }
-
-  refresh(){
-    setTimeout(() => {
-      this.print(`Round ${this.rounds}`)
-      player1.print(`Select a spell!`)
-      player1.printText(``)
-      player2.print(`Select a spell!`)
-      player2.printText(``)
-      // this.refresh()
-    }, 5000)
-  }
-
-  checkOver(){
-    if (player1.isAlive() && player2.isAlive()) {
-        this.refresh()
-      }else{
-        this.end()
-      }
-  }
-
-  end(){
-    this.print('Game Over!')
-    if (player1.isAlive()) {
-      player1.print(`Player 1 Wins!`)
-      player1.printText(`${player1.name} has emerged victorious!\nLong live ${player1.house}!`)
-      player2.print(`Player 2 Loses!`)
-      player2.printText(`${player2.name} has perished!\nA dark day indeed for ${player2.house}!`)
-      this.save(player1)
-    }
-    else{
-      player2.print(`Player 2 Wins!`)
-      player2.printText(`${player2.name} has emerged victorious!\nLong live ${player2.house}!`)
-      player1.print(`Player 1 Loses!`)
-      player1.printText(`${player1.name} has perished!\nA dark day indeed for ${player1.house}!`)
-      this.save(player2)
-    }
-  }
-
-  save(winner){
-    let options =
-    {
-      headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify({character_id: winner.id})
-    }
-    fetch("http://localhost:3000/games", options)
-    .then(res => res.json())
-    .then(json => console.log(json))
-  }
-
-
-}
-
-
-
 document.addEventListener('DOMContentLoaded', startup)
 
 function startup() {
-  document.getElementById('mute').addEventListener('click', () => {
-    if (!document.querySelector('audio').muted) {
-      document.querySelector('audio').muted = true;
-      document.querySelector('#mute').innerHTML = '<i class="fa fa-volume-off"></i>'
-    }else {
-      document.querySelector('audio').muted = false;
-      document.querySelector('#mute').innerHTML = '<i class="fa fa-volume-up"></i>'
-    }
-
-  })
-
-
   console.log('hi')
-
+  startMute()
   fetch('http://localhost:3000/characters').then(res => res.json()).then(json => createCharacters(json))
+}
+
+function startMute() {
+  let mute = document.getElementById('mute')
+  let audio = document.querySelector('audio')
+  mute.addEventListener('click', () => {
+    if (!audio.muted) {
+      audio.muted = true;
+      mute.innerHTML = '<i class="fa fa-volume-off"></i>'
+    }else {
+      audio.muted = false;
+      mute.innerHTML = '<i class="fa fa-volume-up"></i>'
+    }
+  })
 }
 
 function createCharacters(json) {
@@ -257,83 +75,6 @@ function characterSelect() {
     let kn2 = new KeyNav(2)
 
 }
-class KeyNav {
-  constructor(p) {
-    this.p = p
-    this.make()
-  }
-
-  make(){
-    let navArray;
-    if (this.p === 2) {
-      navArray = ['#p2-container', 38, 40, 37, 39, 16]
-    } else {
-      navArray = ['#p1-container', 87, 83, 65, 68, 9]
-    }
-    let current = document.querySelector(navArray[0]).querySelector('button')
-    current.className = 'current'
-
-    document.addEventListener('keydown', e => {
-    // e.preventDefault();
-    switch (e.keyCode) {
-      case navArray[1]:
-      // UP
-      e.preventDefault();
-      current.className = ''
-      if (current.parentElement.previousElementSibling) {
-        current = current.parentElement.previousElementSibling.firstChild
-      }else {
-        current = current.parentElement.parentElement.lastElementChild.lastElementChild
-      }
-      current.className = 'current'
-
-      break;
-      case navArray[2]:
-      e.preventDefault();
-      // DOWN
-      current.className = ''
-      if (current.parentElement.nextElementSibling) {
-        current = current.parentElement.nextElementSibling.firstChild
-      }else {
-        current = current.parentElement.parentElement.firstElementChild.firstElementChild
-      }
-      current.className = 'current'
-      break;
-      case navArray[3]:
-      e.preventDefault();
-      //LEFT
-      if (current.parentElement.parentElement.parentElement.previousElementSibling) {
-        current.className = ''
-        current = current.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.firstElementChild
-        current.className = 'current'
-      }
-      break;
-      case navArray[4]:
-      e.preventDefault();
-      //RIGHT
-      if (current.parentElement.parentElement.parentElement.nextElementSibling) {
-        current.className = ''
-        current = current.parentElement.parentElement.parentElement.nextElementSibling.firstElementChild.firstElementChild.firstElementChild
-        current.className = 'current'
-      }
-      break;
-      case navArray[5]:
-      e.preventDefault();
-      //SHIFT
-      current.click()
-      if (current.parentElement.tagName == 'TR') {
-        current.className = ''
-        current = document.querySelector(navArray[0]).querySelector('button')
-        current.className = 'current'
-      }
-      break;
-      // default:
-
-    }
-  })}
-}
-
-
 
 
 function characterProfile(player) {
