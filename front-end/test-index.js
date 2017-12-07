@@ -1,6 +1,7 @@
 const store = {characters: []}
 let player1
 let player2
+let game
 
 class Character {
   constructor(id, name, house, health, spells, imageUrl) {
@@ -21,49 +22,119 @@ class Character {
     this.moves.push(spell)
   }
 
-  getMove(){
-    return this.moves[this.moves.length - 1];
+  lastSpell(){
+    return this.moves[this.moves.length - 1]
   }
 
+  prevMove(){
+    // let move = this.moves[this.moves.length - 1];
+    let move = this.lastSpell();
+    let moveObj = {}
+    moveObj[move['category']] = move['strength']
+    return  moveObj;
+  }
+
+  getMove(){
+    let generic = {'attack': 0, 'defend':0, 'heal':0}
+    let newMove = this.prevMove()
+    let move = Object.assign(generic, newMove)
+    return move;
+  }
+
+  isAlive(){
+    return this.health > 0;
+  }
+
+  heal(strength){
+    this.health += strength
+    if (this.health > 100) {
+      this.health = 100
+    }
+  }
+
+  damage(strength){
+    this.health -= strength
+  }
+
+  print(thing){
+    this.gameDiv.innerText = thing;
+  }
+
+  printText(thing){
+    this.gameDiv.nextElementSibling.innerText = thing;
+  }
 }
 
-// class Game {
-//   constructor(player1, player2) {
-//     this.player1 = player1;
-//     this.player2 = player2;
-//     this.winner;
-//     this.rounds = 1;
-//     this.start();
-//   }
-//
-//   start(){
-//     // console.log(`${player1.name} and ${player2.name} are in the game.`);
-//     while (player1.health > 0 && player2.health > 0) {
-//       this.prompt()
-//     }
-//   }
-//
-//   prompt(){
-//     if (player1.moves.length === this.rounds && player2.moves.length === this.rounds) {
-//       this.execute(player1.getMove(), player2.getMove())
-//     }
-//   }
-//
-//   execute(){
-//     this.rounds++;
-//     let p1m = player1.getMove()
-//     let p2m = player2.getMove()
-//     if (p1m.category === ) {
-//
-//     }
-//
-//   }
-//
-//   save(){
-//
-//   }
-// }
-// const p2Container = document.getElementsById('p2-contain')
+class Game {
+  constructor(player1, player2) {
+    this.player1 = player1;
+    this.player2 = player2;
+    this.winner;
+    this.rounds = 1;
+    // this.start();
+  }
+
+  // start(){
+  //   // console.log(`${player1.name} and ${player2.name} are in the game.`);
+  //   if (player1.isAlive() && player2.isAlive()) {
+  //     this.prompt()
+  //   }
+  //   else{
+  //     this.end()
+  //   }
+  // }
+
+  // prompt(){
+  //   if (player1.moves.length === this.rounds && player2.moves.length === this.rounds) {
+  //     this.execute(player1.getMove(), player2.getMove())
+  //   }
+  //   // else{
+  //   //   this.prompt()
+  //   // }
+  // }
+
+  execute(){
+    this.rounds++;
+    let p1m = player1.getMove()
+    let p2m = player2.getMove()
+    // if (p1m.category === 'defense') {
+    //   if (p2m.category === 'attack') {
+    //
+    //   }
+    // }
+
+    debugger;
+    p1m['attack'] -= p2m['defend'];
+    p2m['attack'] -= p1m['defend'];
+
+    if (p1m['attack'] < 0) {
+      p1m['attack'] = 0
+    }
+    if (p2m['attack'] < 0) {
+      p2m['attack'] = 0
+    }
+
+    player1.damage(p2m['attack'])
+    player2.damage(p1m['attack'])
+
+    player1.heal(p1m['heal'])
+    player2.heal(p2m['heal'])
+
+    player1.print(`${player1.lastSpell().name}!`)
+    player1.printText(`${player1.name} ${player1.lastSpell().effect}.\n${player2.name} took ${p1m['attack']} damage!`)
+    player2.print(`${player2.lastSpell().name}!`)
+    player2.printText(`${player2.name} ${player2.lastSpell().effect}.\n${player1.name} took ${p2m['attack']} damage!`)
+  }
+
+  end(){
+    console.log('game over')
+  }
+
+  save(){
+
+  }
+}
+
 
 
 document.addEventListener('DOMContentLoaded', startup)
@@ -73,22 +144,6 @@ function startup() {
 
   fetch('http://localhost:3000/characters').then(res => res.json()).then(json => createCharacters(json))
 }
-
-  // window.setTimeout(function barryOtter() {
-  //   let specialisRevelio = document.createElement('h4')
-  //   specialisRevelio.setAttribute("id", "barry-otter-text")
-  //   specialisRevelio.innerText = "Specialis Revelio"
-  //   specialisRevelio.addEventListener('click', startup)
-  //   fetch('http://localhost:3000/characters', {
-  //     method: 'post',
-  //     headers: {"Content-Type": "application/json"},
-  //     body: JSON.stringify({name: 'Barry Otter', house: "Mom's Favorite Cohort", health: 100, image_url: 'http://i.imgur.com/SwXoL.jpg'
-  //   })
-  // })
-  //   .then(res => res.json())
-  //   .then(json => createCharacters(json))}, 10000);
-
-
 
 function createCharacters(json) {
   json.forEach(c => {
@@ -105,25 +160,24 @@ function characterSelect() {
     for (let c of Character.all()) {
       let charButton = document.createElement('button')
       charButton.setAttribute('char-id', c.id)
-      // charButton.id = c.id
+
       charButton.class = 'charButton'
       charButton.innerText = c.name
-      //let button = document.createElement('button')
-      //button.innerText = "Choose"
+
       charButton.addEventListener('click', event => {
         if (charList.id == 'p1') {
-          player1 = Object.assign({}, c, {div: document.querySelector('#p1-container')})
+          player1 = Object.assign(new Character(c.id, c.name, c.house, c.health, c.spells, c.imageUrl), {div: document.querySelector('#p1-container'), gameDiv: document.getElementById('p1-game-details-title')})
           console.log(`player1: ${player1.name}`)
-          document.getElementById('p1-game-details-title').innerText = "Ready Player 1"
+          player1.print("Ready Player 1")
+          // document.getElementById('p1-game-details-title').innerText = "Ready Player 1"
           characterProfile(player1)
         } else {
-          player2 = Object.assign({}, c, {div: document.querySelector('#p2-container')})
+          player2 = Object.assign(new Character(c.id, c.name, c.house, c.health, c.spells, c.imageUrl), {div: document.querySelector('#p2-container'), gameDiv: document.getElementById('p2-game-details-title')})
           console.log(`player2: ${player2.name}`)
-          document.getElementById('p2-game-details-title').innerText = "Ready Player 2"
+          // document.getElementById('p2-game-details-title').innerText = "Ready Player 2"
+          player2.print("Ready Player 2")
           characterProfile(player2)
         }
-
-        // event.target.disabled = true;
       })
         charButton.addEventListener('mouseover', event => {
           charList.parentElement.parentElement.querySelector('.character-image').src = c.imageUrl
@@ -139,9 +193,11 @@ function characterSelect() {
 }
 
 function characterProfile(player) {
-  // if ((typeof player1 === 'object') && (typeof player2 === 'object')) {
-  //   let game = new Game(player1, player2)
-  // }
+  if ((typeof player1 === 'object') && (typeof player2 === 'object')) {
+    game = new Game(player1, player2)
+    player1.print('Select A Spell!')
+    player2.print('Select A Spell!')
+  }
   player.div.querySelector('.card-header').innerText = player.name
   player.div.querySelector('.character-image').src = player.imageUrl
   let cardBody = player.div.querySelector('.card-body')
@@ -174,7 +230,6 @@ function characterProfile(player) {
         spellUL.setAttribute('class', "spell-ul")
       spellDiv.appendChild(spellUL)
       cardBody.appendChild(spellDiv)
-      console.log(spellUL)
       for (let spell of spellList) {
         let spellButtonLi = document.createElement('li');
         spellUL.appendChild(spellButtonLi);
@@ -182,7 +237,12 @@ function characterProfile(player) {
         spellButtonLi.append(spellButton);
         spellButton.innerText = spell.name;
         spellButton.addEventListener('click', (event) => {
+          player.print('Ready!')
           console.log(spell);
+          player.makeMove(spell)
+          if (player1.moves.length === game.rounds && player2.moves.length === game.rounds) {
+            game.execute(player1.getMove(), player2.getMove())
+          }
 
         })
       }
@@ -191,20 +251,4 @@ function characterProfile(player) {
 
   cardBody.appendChild(spellTypeDiv)
 
-  let imageDiv = document.createElement('div')
-  imageDiv.innerHTML +=
-    `<img class="character-image" src="${player.imageUrl}" alt=""></img>
-      <div class="hc 1">
-        <div class="hb 1">
-          <center>${player.health} HP</center>
-        </div>
-      </div>`
-
-    // charProfileDiv.appendChild(imageDiv)
 }
-
-// "id": 1,
-//         "name": "Harry Potter",
-//         "house": "Gryffindor",
-//         "health": 100,
-//         "spells":
