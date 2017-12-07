@@ -5,7 +5,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 
 body {
   background-color: white;
-  /*padding-left: 8px;*/
+  margin: 8px;
   background-image: url(http://i.imgur.com/0K1CoIw.jpg);
   background-position: top;
   background-size: cover;
@@ -67,39 +67,26 @@ ul {
 /*.spell{
   display: inline-block;
   float: right;
-}
-
-.spell-type{
-  display: inline-block;
-  float: left;
 }*/
 
-
-.char-container {
-    /*display: inline-block;*/
-    /*float: right;*/
-    width: 500px;
-    background-color: #941B08;
-}
+/*.spell-type{
+  display: inline-block;
+  width: 80%
+}*/
 
 
 #p1-container{
     display: inline-block;
-    /*background-color: #941B08;*/
-
 }
 
 
 #p2-container{
     display: inline-block;
-    /*background-color: #941B08;*/
-
 }
 
-.charButton{
+/*.charButton{
   display: inline;
-}
-
+}*/
 
 /* ===== cards ===== */
 
@@ -113,7 +100,6 @@ ul {
 .card {
   background-color: #000000;
   border: 4px solid #000000;
-
 }
 
 .card-header {
@@ -150,6 +136,10 @@ ul {
 
 .player-card-body {
   background-color: #E2E2E2;
+}
+
+.char-list {
+  margin: auto;
 }
 
 
@@ -200,12 +190,14 @@ ul {
   font-size: 12px;
 }
 
-/* ===== */
+/* ===== page title ===== */
 
 
 .welcome {
   padding: 24px;
 }
+
+/* ===== audio mute button ===== */
 
 .fa{
   font-size: 40px;
