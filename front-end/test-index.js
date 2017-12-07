@@ -3,6 +3,15 @@ let player1
 let player2
 let game
 
+// class Player {
+//   constructor(character) {
+//     this.character = character;
+//     this.spells = chracter.spells;
+//     this.
+//     this.moves = [];
+//   }
+// }
+
 class Character {
   constructor(id, name, house, health, spells, imageUrl) {
     this.id = id;
@@ -81,25 +90,6 @@ class Game {
     // this.start();
   }
 
-  // start(){
-  //   // console.log(`${player1.name} and ${player2.name} are in the game.`);
-  //   if (player1.isAlive() && player2.isAlive()) {
-  //     this.prompt()
-  //   }
-  //   else{
-  //     this.end()
-  //   }
-  // }
-
-  // prompt(){
-  //   if (player1.moves.length === this.rounds && player2.moves.length === this.rounds) {
-  //     this.execute(player1.getMove(), player2.getMove())
-  //   }
-  //   // else{
-  //   //   this.prompt()
-  //   // }
-  // }
-
   print(thing){
     this.div.querySelector('.card-header').innerText = thing;
   }
@@ -143,9 +133,9 @@ class Game {
   refresh(){
     setTimeout(() => {
       this.print(`Round ${this.rounds}`)
-      player1.print(`Select A Spell!`)
+      player1.print(`Select a spell!`)
       player1.printText(``)
-      player2.print(`Select A Spell!`)
+      player2.print(`Select a spell!`)
       player2.printText(``)
       // this.refresh()
     }, 5000)
@@ -210,6 +200,8 @@ function startup() {
     }
 
   })
+
+
   console.log('hi')
 
   fetch('http://localhost:3000/characters').then(res => res.json()).then(json => createCharacters(json))
@@ -260,7 +252,89 @@ function characterSelect() {
       charList.appendChild(charRow)
       }
     })
+
+    let kn1 = new KeyNav(1)
+    let kn2 = new KeyNav(2)
+
 }
+class KeyNav {
+  constructor(p) {
+    this.p = p
+    this.make()
+  }
+
+  make(){
+    let navArray;
+    if (this.p === 2) {
+      navArray = ['#p2-container', 38, 40, 37, 39, 16]
+    } else {
+      navArray = ['#p1-container', 87, 83, 65, 68, 9]
+    }
+    let current = document.querySelector(navArray[0]).querySelector('button')
+    current.className = 'current'
+
+    document.addEventListener('keydown', e => {
+    // e.preventDefault();
+    switch (e.keyCode) {
+      case navArray[1]:
+      // UP
+      e.preventDefault();
+      current.className = ''
+      if (current.parentElement.previousElementSibling) {
+        current = current.parentElement.previousElementSibling.firstChild
+      }else {
+        current = current.parentElement.parentElement.lastElementChild.lastElementChild
+      }
+      current.className = 'current'
+
+      break;
+      case navArray[2]:
+      e.preventDefault();
+      // DOWN
+      current.className = ''
+      if (current.parentElement.nextElementSibling) {
+        current = current.parentElement.nextElementSibling.firstChild
+      }else {
+        current = current.parentElement.parentElement.firstElementChild.firstElementChild
+      }
+      current.className = 'current'
+      break;
+      case navArray[3]:
+      e.preventDefault();
+      //LEFT
+      if (current.parentElement.parentElement.parentElement.previousElementSibling) {
+        current.className = ''
+        current = current.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.firstElementChild
+        current.className = 'current'
+      }
+      break;
+      case navArray[4]:
+      e.preventDefault();
+      //RIGHT
+      if (current.parentElement.parentElement.parentElement.nextElementSibling) {
+        current.className = ''
+        current = current.parentElement.parentElement.parentElement.nextElementSibling.firstElementChild.firstElementChild.firstElementChild
+        current.className = 'current'
+      }
+      break;
+      case navArray[5]:
+      e.preventDefault();
+      //SHIFT
+      current.click()
+      if (current.parentElement.tagName == 'TR') {
+        current.className = ''
+        current = document.querySelector(navArray[0]).querySelector('button')
+        current.className = 'current'
+      }
+      break;
+      // default:
+
+    }
+  })}
+}
+
+
+
 
 function characterProfile(player) {
   if ((typeof player1 === 'object') && (typeof player2 === 'object')) {
