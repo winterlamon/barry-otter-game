@@ -10,6 +10,7 @@ Character.create(name: 'Draco Malfoy', house: 'Slytherin', health: 100, image_ur
 Character.create(name: 'Lord Voldemort', house: 'Slytherin', health: 100, image_url: 'https://images.hellogiggles.com/uploads/2016/05/25115258/voldermort.jpg')
 Character.create(name: 'Severus Snape', house: 'Slytherin', health: 100, image_url: 'https://vignette3.wikia.nocookie.net/villains/images/1/12/Snape-will-never-die-severus-snape-22970808-1600-2118.jpg/revision/latest?cb=20170304205903')
 Character.create(name: 'Dolores Umbridge', house: 'Slytherin', health: 100, image_url: 'https://images.moviepilot.com/images/c_limit,q_auto:good,w_600/ket6zbluwttjko7f9ouw/3-reasons-why-we-love-to-hate-harry-potter-s-nemesis-dolores-umbridge.jpg')
+Character.create(name: 'Barry Otter', house: 'Gryffindor', health: 100, image_url: 'https://pre00.deviantart.net/1695/th/pre/i/2010/304/0/e/harry_otter_by_rainyxskyz-d31xa04.jpg')
 
 
 
