@@ -145,6 +145,8 @@ ul {
 
 .char-list {
   margin: auto;
+  max-height: 320px;
+  overflow-y: auto;
 }
 
 .spell{
@@ -218,6 +220,10 @@ ul {
   padding: 24px;
 }
 
+#welcome-title {
+
+}
+
 /* ===== audio mute button ===== */
 
 .fa{
@@ -225,7 +231,9 @@ ul {
 }
 
 #mute{
-  width: 60px;
+  width: auto;
+  margin-left: 15px;
+
 }
 
 

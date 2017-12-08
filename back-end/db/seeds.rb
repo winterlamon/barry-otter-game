@@ -12,7 +12,7 @@ Character.create(name: 'Draco Malfoy', house: 'Slytherin', health: 100, image_ur
 Character.create(name: 'Lord Voldemort', house: 'Slytherin', health: 100, image_url: './assets/character_pics/voldermort.jpg')
 Character.create(name: 'Severus Snape', house: 'Slytherin', health: 100, image_url: './assets/character_pics/snape.jpg')
 Character.create(name: 'Dolores Umbridge', house: 'Slytherin', health: 100, image_url: './assets/character_pics/dolores.jpg')
-
+Character.create(name: 'Barry Otter', house: 'Gryffindor', health: 100, image_url: './assets/character_pics/barry_otter.jpg')
 
 
 # ===== Spells =====
