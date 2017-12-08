@@ -11,6 +11,13 @@ function startup() {
   fetch('http://localhost:3000/characters').then(res => res.json()).then(json => createCharacters(json))
 }
 
+setTimeout(function titleDisappear() {
+  let welcomeTitle = document.querySelector('.welcome')
+  welcomeTitle.remove()
+  let muteText = document.querySelector('#mute')
+  muteText.innerHTML = '<i class="fa fa-volume-up" style="font-size:17px; vertical-align: center;"></i>'
+}, 5000)
+
 function startMute() {
   let mute = document.getElementById('mute')
   let audio = document.querySelector('audio')
@@ -78,8 +85,8 @@ function characterSelect() {
 function characterProfile(player) {
   if ((typeof player1 === 'object') && (typeof player2 === 'object')) {
     game = new Game(player1, player2)
-    player1.print('Select A Spell!')
-    player2.print('Select A Spell!')
+    player1.print('Select a spell!')
+    player2.print('Select a spell!')
   }
   player.div.querySelector('.card-header').innerText = player.name
   player.div.querySelector('.character-image').src = player.imageUrl
