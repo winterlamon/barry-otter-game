@@ -34,9 +34,7 @@ function createCharacters(json) {
 
 function characterSelect() {
   let charLists = [...document.getElementsByClassName('char-list')]
-  // debugger;
   charLists.forEach(charList => {
-    // debugger;
     for (let c of Character.all()) {
       let charButton = document.createElement('button')
       charButton.setAttribute('char-id', c.id)
@@ -103,7 +101,6 @@ function characterProfile(player) {
 
     typeButton.addEventListener('click', (event) => {
       let spellList = player.spells.filter(spell => (spell.category === type.toLowerCase()));
-      // debugger
       let existingSpell = player.div.querySelector('.spell')
         if (existingSpell) {
           existingSpell.remove()
