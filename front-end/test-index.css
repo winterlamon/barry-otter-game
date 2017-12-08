@@ -140,7 +140,8 @@ ul {
 }
 
 .player-card-body {
-  background-color: #E2E2E2;
+  /*background-color: #E2E2E2;*/
+  background-color: #941B08;
 }
 
 .char-list {
