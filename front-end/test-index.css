@@ -219,6 +219,10 @@ ul {
   padding: 24px;
 }
 
+#welcome-title {
+
+}
+
 /* ===== audio mute button ===== */
 
 .fa{
@@ -226,7 +230,9 @@ ul {
 }
 
 #mute{
-  width: 60px;
+  width: auto;
+  margin-left: 15px;
+
 }
 
 
