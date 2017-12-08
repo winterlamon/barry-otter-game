@@ -51,7 +51,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      byebug
       params.require(:game).permit(:character_id)
     end
 end

@@ -134,8 +134,9 @@ ul {
 }
 
 .card-img-top {
-  height: 300px;
+  height: 200px;
 }
+/*image dimensions are currently 476.5 x 300px*/
 
 .player-card-body {
   background-color: #E2E2E2;
