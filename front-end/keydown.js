@@ -11,6 +11,7 @@ class KeyNav {
     } else {
       navArray = ['#p1-container', 87, 83, 65, 68, 9]
     }
+    let image = document.querySelector(navArray[0]).querySelector('img')
     let current = document.querySelector(navArray[0]).querySelector('button')
     current.className = 'current'
 
@@ -19,7 +20,9 @@ class KeyNav {
     switch (e.keyCode) {
       case navArray[1]:
       // UP
+      $('.current').trigger('mouseover')
       e.preventDefault();
+
       current.className = ''
       if (current.parentElement.previousElementSibling) {
         current = current.parentElement.previousElementSibling.firstChild
@@ -30,7 +33,10 @@ class KeyNav {
 
       break;
       case navArray[2]:
+
+      $('.current').trigger('mouseover')
       e.preventDefault();
+
       // DOWN
       current.className = ''
       if (current.parentElement.nextElementSibling) {
