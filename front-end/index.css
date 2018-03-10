@@ -1,118 +1,244 @@
 html, body, h1, h2, h3, h4, h5, h6 {
   font-family: 'Press Start 2P', cursive;
-}
-
-h1 {
-  text-align: center;
-  color: black;
+  /*font-family: 'Roboto', sans-serif;*/
 }
 
 body {
   background-color: white;
-  /*padding-left: 8px;*/
+  margin: 4px;
+  background-image: url(http://i.imgur.com/0K1CoIw.jpg);
+  background-position: top;
+  background-size: cover;
+  align-self: center;
 }
 
+/*.game-window {
+
+}*/
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  color: #941B08;
+  text-shadow: 2px 2px 2px gold;
+}
+
+h4 {
+  font-size: 20px;
+  /*font-weight: bold;*/
+}
+
+button {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  outline: none;
+  color: gold;
+  background-color: #941B08;
+  border: 8px;
+  border-radius: 0px;
+  margin-bottom: 5px;
+  width: -webkit-fill-available;
+}
+
+button:hover {
+  background-color: gold;
+  color: #941B08;
+}
+
+button.current {
+  background-color: gold;
+  color: #941B08;
+}
+
+button:active {
+  background-color: gold;
+  box-shadow: 0 5px #666;
+  /*transform: translateY(4px);*/
+}
 
 ul {
   list-style: none;
+  padding: 0px;
 }
 
-
-/*.spell{
-  display: inline-block;
-  float: right;
+.col {
+  width: auto;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
-.spell-type{
-  display: inline-block;
-  float: left;
-}*/
-
-/*.character-image{
-  width: 200px;
-  border-radius: 20px;
-  display: inline-block;
-  float: right;
-  margin: 30px;
-}*/
-
-/*.char-list{
-  background-color: #941B08;
-}*/
-
-.hc{
-  width: 200px;
-  height: 20px;
-  background-color: lightblue;
-  border-radius: 20px;
-  border-width: 5px;
-  border-color: black;
-  margin: 30px;
+.row {
+  align-items: center;
 }
-
-.hb{
-  width: 100px;
-  height: 20px;
-  background-color: lightgreen;
-  border-radius: 20px;
-}
-
-.char-container {
-    /*display: inline-block;*/
-    /*float: right;*/
-    width: 500px;
-    background-color: #941B08;
-}
-
 
 #p1-container{
     display: inline-block;
-    /*background-color: #941B08;*/
-
 }
+
 
 #p2-container{
     display: inline-block;
-    /*background-color: #941B08;*/
-
 }
 
-.charButton{
+/*.charButton{
   display: inline;
-}
-
-.logo{
-  width: 100px;
-  border-radius: 20px;
-  display: inline-block;
-  /*float: right;
-  margin: 30px;*/
-}
+}*/
 
 /* ===== cards ===== */
 
+.card-deck {
+  width: 100%;
+  align-items: flex-start;*/
+  /*align-self: center;*/
+  /*align-content: center;*/
+  /*margin: 10px;*/
+}
+
+.card {
+  background-color: #000000;
+  border: 4px solid #000000;
+  padding: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .card-header {
+  background-color: #000000;
+  border-radius: 2px;
+  color: #FFFFFF;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  vertical-align: middle;
+}
+
+.card-body {
+  background-color: #FFFFFF;
+  text-align: center;
+  border: 1px solid #666666;
+  border-top-style: solid;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  align-items: center;
+}
+
+.card-footer {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #666666;
   text-align: center;
 }
 
 .card-img-top {
-  height: 300px;
+  height: 200px;
+}
+/*image dimensions are currently 476.5 x 300px*/
+
+.player-card-body {
+  background-color: #E2E2E2;
 }
 
-#game-details {
-    position: absolute;
+.char-list {
+  margin: auto;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.spell{
+  display: inline-block;
+  float: right;
+  margin: auto;
+  padding: 8px;
+}
+
+.spell-type{
+  display: inline-block;
+  max-width: 175px;
+  margin: auto;
+  padding: 8px;
+}
+
+
+#game-details-card {
+    /*position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
+    max-width: 375px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 
+#game-header {
+  background-color: #000000;
+  color: #FFFFFF;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  vertical-align: middle;
 }
 
 #game-details-card{
-    width: 250px;
+    vertical-align: middle;
+    width: 75%;
 }
 
+#p1-game-details {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  vertical-align: middle;
+}
+
+#p2-game-details {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  vertical-align: middle;
+
+}
+
+/* ===== progress bar ===== */
+
+.progress {
+  background-color: red;
+}
+
+.progress-bar {
+  font-size: 12px;
+}
+
+/* ===== page title ===== */
 
 
 .welcome {
   padding: 24px;
+}
+
+#welcome-title {
+
+}
+
+/* ===== audio mute button ===== */
+
+.fa{
+  font-size: 40px;
+}
+
+#mute{
+  width: auto;
+  margin-left: 15px;
+
+}
+
+
+/* ===== barry otter ===== */
+
+#barry-otter-text {
+  color: white;
+  text-shadow: 1px 1px 1px #999999;
 }
